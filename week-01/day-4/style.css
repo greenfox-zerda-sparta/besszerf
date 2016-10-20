@@ -66,3 +66,8 @@ ul ul {
 ul ol {
   color:black;
 }
+#e_6 p {
+  width: 290px;
+  padding-left: 20px;
+  border-left: 2px solid black;
+}
