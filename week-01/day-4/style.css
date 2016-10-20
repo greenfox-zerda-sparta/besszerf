@@ -45,12 +45,24 @@
   font-size: 30px;
   font-family: serif;
 }
-#e_4 h1, #e_4 h3 {
+#e_4 h1, #e_4 h2 {
   color: green;
 }
-#red {
+#e_5 h2 {
+  color: orange;
+}.red {
   color:red;
 }
-#blue {
+.blue {
   color: blue;
+}
+ul {
+  list-style-type: square;
+}
+ul ul {
+  list-style-type: disc;
+  color:black;
+}
+ul ol {
+  color:black;
 }
