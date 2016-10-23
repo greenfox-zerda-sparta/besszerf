@@ -1,6 +1,6 @@
 body {
   font-size: 14px;
-  font-family: Josefin sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   line-height: 2em;
   max-width: 1280px;
   text-align: center;
@@ -32,7 +32,7 @@ h2 {
 }
 
 h3 {
-  font-family: Merriweather sans-serif;
+  font-family: 'Merriweather', sans-serif;
   font-size: 0.95em;
   font-style: italic;
   margin-top: 0;
