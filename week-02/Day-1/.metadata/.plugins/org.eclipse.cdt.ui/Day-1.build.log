@@ -1,0 +1,15 @@
+12:21:32 **** Incremental Build of configuration Debug for project Day-1 ****
+make all 
+Building file: ../src/ex1.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ex1.d" -MT"src/ex1.d" -o "src/ex1.o" "../src/ex1.cpp"
+Finished building: ../src/ex1.cpp
+ 
+Building target: Day-1
+Invoking: GCC C++ Linker
+g++  -o "Day-1"  ./src/ex1.o ./src/t.o   
+Finished building target: Day-1
+ 
+
+12:21:32 Build Finished (took 304ms)
+

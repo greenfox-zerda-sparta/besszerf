@@ -1,0 +1,173 @@
+12:24:27 **** Clean-only build of configuration Debug for project t ****
+make clean 
+rm -rf  ./src/ex1.o ./src/t.o  ./src/ex1.d ./src/t.d  t
+ 
+12:24:31 **** Build of configuration Debug for project t ****
+make all 
+Building file: ../src/ex1.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ex1.d" -MT"src/ex1.d" -o "src/ex1.o" "../src/ex1.cpp"
+Finished building: ../src/ex1.cpp
+ 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/ex1.o ./src/t.o   
+Finished building target: t
+ 
+12:24:58 **** Incremental Build of configuration Debug for project t ****
+make all 
+make: Nothing to be done for 'all'.
+12:25:43 **** Incremental Build of configuration Debug for project t ****
+make all 
+make: Nothing to be done for 'all'.
+12:26:45 **** Incremental Build of configuration Debug for project t ****
+make all 
+make: Nothing to be done for 'all'.
+12:27:05 **** Incremental Build of configuration Debug for project t ****
+make all 
+make: Nothing to be done for 'all'.
+12:28:18 **** Incremental Build of configuration Debug for project t ****
+make all 
+make: Nothing to be done for 'all'.
+12:37:34 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:38:04 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:41:28 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:10:20: error: ‘a’ was not declared in this scope
+  cout << "a = " << a << endl;
+                    ^
+make: *** [src/t.o] Error 1
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+12:41:51 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:43:35 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:45:51 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:49:56 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:9:9: error: invalid type argument of unary ‘*’ (have ‘int’)
+  e = e**3;
+         ^
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+make: *** [src/t.o] Error 1
+12:50:39 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:9:9: error: expected primary-expression before ‘;’ token
+  e = e**;
+         ^
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+make: *** [src/t.o] Error 1
+12:53:09 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+12:55:55 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:9:12: error: ‘sqrt’ was not declared in this scope
+  f = sqrt(f);
+            ^
+make: *** [src/t.o] Error 1
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+12:56:15 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:9:10: error: found ‘:’ in nested-name-specifier, expected ‘::’
+  f = math:sqrt(f);
+          ^
+../src/t.cpp:9:6: error: ‘math’ has not been declared
+  f = math:sqrt(f);
+      ^
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+make: *** [src/t.o] Error 1
+12:58:09 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
