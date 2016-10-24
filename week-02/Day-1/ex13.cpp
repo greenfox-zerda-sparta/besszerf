@@ -5,10 +5,9 @@ using namespace std;
 
 int main() {
 	string n = "The result is: ";
-	string a = "55";
-	string b = "kg";
-	// concat the product of a and b to the n string
-	n = n + a + b;
-	cout << n;
+	int a = 2;
+	int b = 3;
+	// write out n, a, b in the same line
+	cout << n << "a = " << a << "; b = " << b;
 	return 0;
 }

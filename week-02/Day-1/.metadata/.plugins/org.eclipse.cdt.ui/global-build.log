@@ -289,3 +289,529 @@ Finished building target: t
 14:04:18 **** Incremental Build of configuration Debug for project t ****
 make all 
 make: Nothing to be done for 'all'.
+14:17:26 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp:1:1: error: ‘include’ does not name a type
+ include <iostream>
+ ^
+In file included from /usr/include/c++/5/bits/stl_pair.h:59:0,
+                 from /usr/include/c++/5/bits/stl_algobase.h:64,
+                 from /usr/include/c++/5/bits/char_traits.h:39,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/move.h:193:26: error: ‘size_t’ has not been declared
+   template<typename _Tp, size_t _Nm>
+                          ^
+/usr/include/c++/5/bits/move.h: In function ‘void std::swap(_Tp (&)[_Nm], _Tp (&)[_Nm])’:
+/usr/include/c++/5/bits/move.h:200:12: error: ‘size_t’ was not declared in this scope
+       for (size_t __n = 0; __n < _Nm; ++__n)
+            ^
+/usr/include/c++/5/bits/move.h:200:28: error: ‘__n’ was not declared in this scope
+       for (size_t __n = 0; __n < _Nm; ++__n)
+                            ^
+In file included from /usr/include/c++/5/bits/stl_algobase.h:65:0,
+                 from /usr/include/c++/5/bits/char_traits.h:39,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/stl_iterator_base_types.h: At global scope:
+/usr/include/c++/5/bits/stl_iterator_base_types.h:116:67: error: ‘ptrdiff_t’ does not name a type
+   template<typename _Category, typename _Tp, typename _Distance = ptrdiff_t,
+                                                                   ^
+/usr/include/c++/5/bits/stl_iterator_base_types.h:182:15: error: ‘ptrdiff_t’ does not name a type
+       typedef ptrdiff_t                   difference_type;
+               ^
+/usr/include/c++/5/bits/stl_iterator_base_types.h:193:15: error: ‘ptrdiff_t’ does not name a type
+       typedef ptrdiff_t                   difference_type;
+               ^
+In file included from /usr/include/c++/5/bits/char_traits.h:39:0,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/stl_algobase.h: In static member function ‘static _Tp* std::__copy_move<_IsMove, true, std::random_access_iterator_tag>::__copy_m(const _Tp*, const _Tp*, _Tp*)’:
+/usr/include/c++/5/bits/stl_algobase.h:382:10: error: ‘ptrdiff_t’ does not name a type
+    const ptrdiff_t _Num = __last - __first;
+          ^
+/usr/include/c++/5/bits/stl_algobase.h:383:8: error: ‘_Num’ was not declared in this scope
+    if (_Num)
+        ^
+/usr/include/c++/5/bits/stl_algobase.h:385:22: error: ‘_Num’ was not declared in this scope
+    return __result + _Num;
+                      ^
+/usr/include/c++/5/bits/stl_algobase.h: In static member function ‘static _Tp* std::__copy_move_backward<_IsMove, true, std::random_access_iterator_tag>::__copy_move_b(const _Tp*, const _Tp*, _Tp*)’:
+/usr/include/c++/5/bits/stl_algobase.h:584:10: error: ‘ptrdiff_t’ does not name a type
+    const ptrdiff_t _Num = __last - __first;
+          ^
+/usr/include/c++/5/bits/stl_algobase.h:585:8: error: ‘_Num’ was not declared in this scope
+    if (_Num)
+        ^
+/usr/include/c++/5/bits/stl_algobase.h:587:22: error: ‘_Num’ was not declared in this scope
+    return __result - _Num;
+                      ^
+/usr/include/c++/5/bits/stl_algobase.h: In function ‘typename __gnu_cxx::__enable_if<std::__is_byte<_Tp>::__value, void>::__type std::__fill_a(_Tp*, _Tp*, const _Tp&)’:
+/usr/include/c++/5/bits/stl_algobase.h:722:11: error: expected primary-expression before ‘const’
+       if (const size_t __len = __last - __first)
+           ^
+/usr/include/c++/5/bits/stl_algobase.h:722:11: error: expected ‘)’ before ‘const’
+/usr/include/c++/5/bits/stl_algobase.h:723:63: error: ‘__len’ was not declared in this scope
+  __builtin_memset(__first, static_cast<unsigned char>(__tmp), __len);
+                                                               ^
+/usr/include/c++/5/bits/stl_algobase.h: In static member function ‘static bool std::__equal<true>::equal(const _Tp*, const _Tp*, const _Tp*)’:
+/usr/include/c++/5/bits/stl_algobase.h:829:8: error: expected primary-expression before ‘const’
+    if (const size_t __len = (__last1 - __first1))
+        ^
+/usr/include/c++/5/bits/stl_algobase.h:829:8: error: expected ‘)’ before ‘const’
+/usr/include/c++/5/bits/stl_algobase.h:830:65: error: ‘__len’ was not declared in this scope
+      return !__builtin_memcmp(__first1, __first2, sizeof(_Tp) * __len);
+                                                                 ^
+/usr/include/c++/5/bits/stl_algobase.h: In static member function ‘static bool std::__lexicographical_compare<true>::__lc(const _Tp*, const _Tp*, const _Up*, const _Up*)’:
+/usr/include/c++/5/bits/stl_algobase.h:933:10: error: ‘size_t’ does not name a type
+    const size_t __len1 = __last1 - __first1;
+          ^
+/usr/include/c++/5/bits/stl_algobase.h:934:10: error: ‘size_t’ does not name a type
+    const size_t __len2 = __last2 - __first2;
+          ^
+/usr/include/c++/5/bits/stl_algobase.h:935:8: error: expected primary-expression before ‘const’
+    if (const size_t __len = std::min(__len1, __len2))
+        ^
+/usr/include/c++/5/bits/stl_algobase.h:935:8: error: expected ‘)’ before ‘const’
+/usr/include/c++/5/bits/stl_algobase.h:936:62: error: ‘__len’ was not declared in this scope
+      if (int __result = __builtin_memcmp(__first1, __first2, __len))
+                                                              ^
+/usr/include/c++/5/bits/stl_algobase.h:938:11: error: ‘__len1’ was not declared in this scope
+    return __len1 < __len2;
+           ^
+/usr/include/c++/5/bits/stl_algobase.h:938:20: error: ‘__len2’ was not declared in this scope
+    return __len1 < __len2;
+                    ^
+In file included from /usr/include/c++/5/bits/char_traits.h:40:0,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/postypes.h: At global scope:
+/usr/include/c++/5/bits/postypes.h:98:11: error: ‘ptrdiff_t’ does not name a type
+   typedef ptrdiff_t streamsize; // Signed integral type
+           ^
+In file included from /usr/include/c++/5/string:40:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/char_traits.h:104:66: error: ‘std::size_t’ has not been declared
+       compare(const char_type* __s1, const char_type* __s2, std::size_t __n);
+                                                                  ^
+/usr/include/c++/5/bits/char_traits.h:106:19: error: ‘size_t’ in namespace ‘std’ does not name a type
+       static std::size_t
+                   ^
+/usr/include/c++/5/bits/char_traits.h:110:39: error: ‘std::size_t’ has not been declared
+       find(const char_type* __s, std::size_t __n, const char_type& __a);
+                                       ^
+/usr/include/c++/5/bits/char_traits.h:113:57: error: ‘std::size_t’ has not been declared
+       move(char_type* __s1, const char_type* __s2, std::size_t __n);
+                                                         ^
+/usr/include/c++/5/bits/char_traits.h:116:57: error: ‘std::size_t’ has not been declared
+       copy(char_type* __s1, const char_type* __s2, std::size_t __n);
+                                                         ^
+/usr/include/c++/5/bits/char_traits.h:119:35: error: ‘std::size_t’ has not been declared
+       assign(char_type* __s, std::size_t __n, char_type __a);
+                                   ^
+/usr/include/c++/5/bits/char_traits.h:145:64: error: ‘std::size_t’ has not been declared
+     compare(const char_type* __s1, const char_type* __s2, std::size_t __n)
+                                                                ^
+/usr/include/c++/5/bits/char_traits.h: In static member function ‘static int __gnu_cxx::char_traits<_CharT>::compare(const char_type*, const char_type*, int)’:
+/usr/include/c++/5/bits/char_traits.h:147:12: error: ‘size_t’ is not a member of ‘std’
+       for (std::size_t __i = 0; __i < __n; ++__i)
+            ^
+/usr/include/c++/5/bits/char_traits.h:147:12: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/string:40:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/char_traits.h:147:33: error: ‘__i’ was not declared in this scope
+       for (std::size_t __i = 0; __i < __n; ++__i)
+                                 ^
+/usr/include/c++/5/bits/char_traits.h: At global scope:
+/usr/include/c++/5/bits/char_traits.h:156:10: error: ‘size_t’ in namespace ‘std’ does not name a type
+     std::size_t
+          ^
+/usr/include/c++/5/bits/char_traits.h:169:37: error: ‘std::size_t’ has not been declared
+     find(const char_type* __s, std::size_t __n, const char_type& __a)
+                                     ^
+/usr/include/c++/5/bits/char_traits.h: In static member function ‘static const char_type* __gnu_cxx::char_traits<_CharT>::find(const char_type*, int, const char_type&)’:
+/usr/include/c++/5/bits/char_traits.h:171:12: error: ‘size_t’ is not a member of ‘std’
+       for (std::size_t __i = 0; __i < __n; ++__i)
+            ^
+/usr/include/c++/5/bits/char_traits.h:171:12: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/string:40:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/char_traits.h:171:33: error: ‘__i’ was not declared in this scope
+       for (std::size_t __i = 0; __i < __n; ++__i)
+                                 ^
+/usr/include/c++/5/bits/char_traits.h: At global scope:
+/usr/include/c++/5/bits/char_traits.h:180:55: error: ‘std::size_t’ has not been declared
+     move(char_type* __s1, const char_type* __s2, std::size_t __n)
+                                                       ^
+/usr/include/c++/5/bits/char_traits.h:189:55: error: ‘std::size_t’ has not been declared
+     copy(char_type* __s1, const char_type* __s2, std::size_t __n)
+                                                       ^
+/usr/include/c++/5/bits/char_traits.h:199:33: error: ‘std::size_t’ has not been declared
+     assign(char_type* __s, std::size_t __n, char_type __a)
+                                 ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:111:31: error: declaration of ‘operator new’ as non-function
+ void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+                               ^
+/usr/include/c++/5/new:111:20: error: ‘size_t’ is not a member of ‘std’
+ void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+                    ^
+/usr/include/c++/5/new:111:20: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:113:33: error: declaration of ‘operator new []’ as non-function
+ void* operator new[](std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+                                 ^
+/usr/include/c++/5/new:113:22: error: ‘size_t’ is not a member of ‘std’
+ void* operator new[](std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+                      ^
+/usr/include/c++/5/new:113:22: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:119:25: error: declaration of ‘operator new’ as non-function
+ void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                         ^
+/usr/include/c++/5/new:119:20: error: ‘size_t’ is not a member of ‘std’
+ void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                    ^
+/usr/include/c++/5/new:119:20: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:119:33: error: expected primary-expression before ‘const’
+ void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                                 ^
+/usr/include/c++/5/new:121:27: error: declaration of ‘operator new []’ as non-function
+ void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                           ^
+/usr/include/c++/5/new:121:22: error: ‘size_t’ is not a member of ‘std’
+ void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                      ^
+/usr/include/c++/5/new:121:22: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:121:35: error: expected primary-expression before ‘const’
+ void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+                                   ^
+/usr/include/c++/5/new:129:32: error: declaration of ‘operator new’ as non-function
+ inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                                ^
+/usr/include/c++/5/new:129:27: error: ‘size_t’ is not a member of ‘std’
+ inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                           ^
+/usr/include/c++/5/new:129:27: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:129:40: error: expected primary-expression before ‘void’
+ inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                                        ^
+/usr/include/c++/5/new:131:34: error: declaration of ‘operator new []’ as non-function
+ inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                                  ^
+/usr/include/c++/5/new:131:29: error: ‘size_t’ is not a member of ‘std’
+ inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                             ^
+/usr/include/c++/5/new:131:29: note: suggested alternative:
+In file included from /usr/include/wchar.h:51:0,
+                 from /usr/include/c++/5/cwchar:44,
+                 from /usr/include/c++/5/bits/postypes.h:40,
+                 from /usr/include/c++/5/bits/char_traits.h:40,
+                 from /usr/include/c++/5/string:40,
+                 from ../src/t.cpp:2:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:216:23: note:   ‘size_t’
+ typedef __SIZE_TYPE__ size_t;
+                       ^
+In file included from /usr/include/c++/5/ext/new_allocator.h:33:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/new:131:42: error: expected primary-expression before ‘void’
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+ inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+                                          ^
+In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
+                 from /usr/include/c++/5/bits/allocator.h:46,
+                 from /usr/include/c++/5/string:41,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/ext/new_allocator.h:44:14: error: ‘std::size_t’ has not been declared
+   using std::size_t;
+              ^
+/usr/include/c++/5/ext/new_allocator.h:45:14: error: ‘std::ptrdiff_t’ has not been declared
+   using std::ptrdiff_t;
+              ^
+/usr/include/c++/5/ext/new_allocator.h:62:15: error: ‘ptrdiff_t’ does not name a type
+       typedef ptrdiff_t  difference_type;
+               ^
+In file included from /usr/include/c++/5/string:41:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/allocator.h:67:15: error: ‘ptrdiff_t’ does not name a type
+       typedef ptrdiff_t   difference_type;
+               ^
+/usr/include/c++/5/bits/allocator.h:96:15: error: ‘ptrdiff_t’ does not name a type
+       typedef ptrdiff_t  difference_type;
+               ^
+In file included from /usr/include/c++/5/string:44:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/ostream_insert.h:45:26: error: ‘streamsize’ has not been declared
+       const _CharT* __s, streamsize __n)
+                          ^
+/usr/include/c++/5/bits/ostream_insert.h: In function ‘void std::__ostream_write(std::basic_ostream<_CharT, _Traits>&, const _CharT*, int)’:
+/usr/include/c++/5/bits/ostream_insert.h:50:13: error: ‘streamsize’ does not name a type
+       const streamsize __put = __out.rdbuf()->sputn(__s, __n);
+             ^
+/usr/include/c++/5/bits/ostream_insert.h:51:11: error: ‘__put’ was not declared in this scope
+       if (__put != __n)
+           ^
+/usr/include/c++/5/bits/ostream_insert.h: At global scope:
+/usr/include/c++/5/bits/ostream_insert.h:57:59: error: ‘streamsize’ has not been declared
+     __ostream_fill(basic_ostream<_CharT, _Traits>& __out, streamsize __n)
+                                                           ^
+/usr/include/c++/5/bits/ostream_insert.h:77:27: error: ‘streamsize’ has not been declared
+        const _CharT* __s, streamsize __n)
+                           ^
+/usr/include/c++/5/bits/ostream_insert.h: In function ‘std::basic_ostream<_CharT, _Traits>& std::__ostream_insert(std::basic_ostream<_CharT, _Traits>&, const _CharT*, int)’:
+/usr/include/c++/5/bits/ostream_insert.h:87:14: error: ‘streamsize’ does not name a type
+        const streamsize __w = __out.width();
+              ^
+/usr/include/c++/5/bits/ostream_insert.h:88:12: error: ‘__w’ was not declared in this scope
+        if (__w > __n)
+            ^
+/usr/include/c++/5/bits/ostream_insert.h: At global scope:
+/usr/include/c++/5/bits/ostream_insert.h:118:68: error: ‘streamsize’ has not been declared
+   extern template ostream& __ostream_insert(ostream&, const char*, streamsize);
+                                                                    ^
+/usr/include/c++/5/bits/ostream_insert.h:122:11: error: ‘streamsize’ has not been declared
+           streamsize);
+           ^
+In file included from /usr/include/c++/5/string:53:0,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/bits/basic_string.tcc: In function ‘std::basic_istream<_CharT, _Traits>& std::operator>>(std::basic_istream<_CharT, _Traits>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)’:
+/usr/include/c++/5/bits/basic_string.tcc:1463:14: error: ‘streamsize’ does not name a type
+        const streamsize __w = __in.width();
+              ^
+/usr/include/c++/5/bits/basic_string.tcc:1464:32: error: ‘__w’ was not declared in this scope
+        const __size_type __n = __w > 0 ? static_cast<__size_type>(__w)
+                                ^
+In file included from /usr/include/c++/5/bits/basic_string.h:40:0,
+                 from /usr/include/c++/5/string:52,
+                 from ../src/t.cpp:2:
+/usr/include/c++/5/ext/alloc_traits.h: In instantiation of ‘struct __gnu_cxx::__alloc_traits<std::allocator<char> >’:
+/usr/include/c++/5/bits/basic_string.h:74:24:   required from ‘class std::__cxx11::basic_string<char>’
+/usr/include/c++/5/bits/basic_string.tcc:1577:25:   required from here
+/usr/include/c++/5/ext/alloc_traits.h:178:53: error: no type named ‘difference_type’ in ‘class std::allocator<char>’
+     typedef typename _Alloc::difference_type        difference_type;
+                                                     ^
+/usr/include/c++/5/ext/alloc_traits.h: In instantiation of ‘struct __gnu_cxx::__alloc_traits<std::allocator<wchar_t> >’:
+/usr/include/c++/5/bits/basic_string.h:74:24:   required from ‘class std::__cxx11::basic_string<wchar_t>’
+/usr/include/c++/5/bits/basic_string.tcc:1592:25:   required from here
+/usr/include/c++/5/ext/alloc_traits.h:178:53: error: no type named ‘difference_type’ in ‘class std::allocator<wchar_t>’
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:7:10: warning: overflow in implicit constant conversion [-Woverflow]
+  int i = 1357988018575474;
+          ^
+../src/t.cpp:10:3: error: ‘cout’ was not declared in this scope
+   cout << "11 is a divisor of i";
+   ^
+../src/t.cpp:12:3: error: ‘cout’ was not declared in this scope
+   cout << "11 is not a divisor of i";
+   ^
+make: *** [src/t.o] Error 1
+14:17:52 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:7:10: warning: overflow in implicit constant conversion [-Woverflow]
+  int i = 1357988018575474;
+          ^
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:18:18 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:7:18: error: ‘signed’ or ‘unsigned’ invalid for ‘i’
+  unsigned double i = 1357988018575474;
+                  ^
+../src/t.cpp:9:10: error: invalid operands of types ‘double’ and ‘int’ to binary ‘operator%’
+  if (i % 11 == 0) {
+          ^
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+make: *** [src/t.o] Error 1
+14:18:43 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:20:26 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp:7:13: warning: character constant too long for its type
+  string m = 'Apple';
+             ^
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:7:13: error: conversion from ‘int’ to non-scalar type ‘std::__cxx11::string {aka std::__cxx11::basic_string<char>}’ requested
+make: *** [src/t.o] Error 1
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+14:21:00 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:21:34 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:28:04 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:29:24 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+14:31:23 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
