@@ -1143,3 +1143,110 @@ Invoking: GCC C++ Linker
 g++  -o "t"  ./src/t.o   
 Finished building target: t
  
+16:02:53 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:03:30 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:09:27 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:11:13 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:19:12 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+../src/t.cpp: In function ‘int main()’:
+../src/t.cpp:19:14: error: ‘ad’ was not declared in this scope
+  while (a <= ad) {
+              ^
+make: *** [src/t.o] Error 1
+src/subdir.mk:18: recipe for target 'src/t.o' failed
+16:19:30 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:22:16 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:25:56 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 
+16:26:54 **** Incremental Build of configuration Debug for project t ****
+make all 
+Building file: ../src/t.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/t.d" -MT"src/t.d" -o "src/t.o" "../src/t.cpp"
+Finished building: ../src/t.cpp
+ 
+Building target: t
+Invoking: GCC C++ Linker
+g++  -o "t"  ./src/t.o   
+Finished building target: t
+ 

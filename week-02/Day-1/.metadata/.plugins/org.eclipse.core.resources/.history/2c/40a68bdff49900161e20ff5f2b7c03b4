@@ -16,7 +16,7 @@ int main() {
 
 
 	short a = 1;
-	while (a <= ae) {
+	while (a <= ad) {
 		cout << text;
 		a++;
 	}
@@ -26,3 +26,4 @@ int main() {
 	}
 	return 0;
 }
+

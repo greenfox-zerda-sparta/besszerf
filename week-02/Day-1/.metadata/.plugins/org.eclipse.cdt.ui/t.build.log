@@ -1,4 +1,4 @@
-15:54:38 **** Incremental Build of configuration Debug for project t ****
+16:26:54 **** Incremental Build of configuration Debug for project t ****
 make all 
 Building file: ../src/t.cpp
 Invoking: GCC C++ Compiler
@@ -11,5 +11,5 @@ g++  -o "t"  ./src/t.o
 Finished building target: t
  
 
-15:54:39 Build Finished (took 540ms)
+16:26:54 Build Finished (took 543ms)
 

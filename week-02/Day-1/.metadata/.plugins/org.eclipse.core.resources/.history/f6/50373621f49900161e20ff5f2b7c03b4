@@ -11,8 +11,7 @@ int main() {
 		cout << b << endl;
 		b++;
 	} while (b <= ad);
-
-
+/*
 	short a = 0;
 	while (a <= ad) {
 		cout << a << endl;
@@ -22,6 +21,7 @@ int main() {
 	for (int i = 0; i <= ad; i++) {
 		cout << i << endl;
 	}
-
+*/
 	return 0;
 }
+

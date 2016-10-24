@@ -21,22 +21,20 @@ int main() {
 		} else {
 			cout << b << endl;
 		}
-		b++;
 	} while (b < 101);
 
 
 	short a = 1;
 	while (a < 101) {
-		if (a % 3 == 0 && a % 5 == 0) {
+		if (b % 3 == 0 && b % 5 == 0) {
 			cout << "FizzBuzz" << endl;
-		}else if (a % 3 == 0){
+		}else if (b % 3 == 0){
 			cout << "Fizz" << endl;
-		} else if (a % 5 == 0) {
+		} else if (b % 5 == 0) {
 			cout << "Buzz" << endl;
 		} else {
-			cout << a << endl;
+			cout << b << endl;
 		}
-		a++;
 	}
 
 	for (int i = 1; i < 101; i++){
