@@ -11,8 +11,8 @@ int main() {
 	// and time is not more than 200
 	// set out to 'check'
 	if (ac % 4 == 0 && time <= 200){
-		out = "check";
-	}
+		out += "check";
+
 	// if time is more than 200
 	// set out to 'Time out'
 	// otherwise set out to 'Run Forest Run!'

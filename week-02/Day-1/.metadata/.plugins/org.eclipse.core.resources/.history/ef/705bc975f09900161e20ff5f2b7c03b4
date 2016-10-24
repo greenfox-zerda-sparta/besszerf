@@ -21,6 +21,7 @@ int main() {
 	} else {
 		out = "Run Forest Run!";
 	}
-	cout << out << endl;
 	return 0;
+
+	cout << out;
 }
