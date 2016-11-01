@@ -16,7 +16,8 @@
 
 using namespace std;
 
-int count_new_guess(int min, int max) {
+int count_new_guess(int min, int max, bool is_up) {
+  if (!is_up) min += 1;
   return (min+max)/2;
 }
 
@@ -36,12 +37,18 @@ int main() {
   int my_guess = first_guess;
   int high = first_high;
   int low = first_low;
-  char answer;
+  char answer = '0';
   bool stop = false;
   bool is_direction_of_guess_up = true;
 
-  cout << "Pick a number between 0 and 10 and enter an alphanumeric character: ";
+  do {
+  cout << "Pick a number between 0 and 10 and enter 'p' - to play or 'x' to exit: ";
   cin >> answer;
+  if (answer == 'x') {
+    cout << "Bye!\n";
+    return 0;
+  }
+  } while (answer != 'p');
   do {
     is_direction_of_guess_up && cout << endl << "Is the number greater than " << my_guess << "? [y/n] ";
     !is_direction_of_guess_up && cout << endl << "Is the number smaller than " << my_guess << "? [y/n] ";
@@ -61,20 +68,14 @@ int main() {
     } else {
       high = my_guess;
     }
-//    cout << high << low;
-    my_guess = count_new_guess(low, high);
-    if (my_guess == low+1 && !is_direction_of_guess_up) {
-      is_direction_of_guess_up = !is_direction_of_guess_up;
-      cout << " !";
-    }
-//    cout << my_guess;
+    my_guess = count_new_guess(low, high, is_direction_of_guess_up);
     if (
         my_guess + 1 == high &&
         my_guess - 1 == low
 
         ) {
       cout << "\nYour number is: " << my_guess << endl << "One more? [y/n] ";
-//      cin >> answer;
+      cin >> answer;
       if (answer == 'y') {
         reset_game(my_guess, high, low, first_guess, first_high, first_low, is_direction_of_guess_up);
       } else {

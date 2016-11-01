@@ -18,9 +18,10 @@ int main(int argc, char** argv){
 	return 0;
 }
 
-float divide(float a, float b){
-	return a/b;
+float divide(float a, float b) {
+  return a/b;
 }
-float reciproc(float a){
-	return 1/a;
+
+float reciproc(float a) {
+  return divide(1, a);
 }
