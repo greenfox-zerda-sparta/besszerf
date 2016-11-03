@@ -5,20 +5,10 @@ using namespace std;
 int *resize (int *array, int size, int new_size) {
   int *pointer = NULL;
   pointer = new int[new_size];
-  if (new_size <= size) {
-    for (int i = 0; i < new_size; i++) {
-      pointer[i] = array[i];
-    }
-  } else {
-    for (int i = 0; i < new_size; i++) {
-      if (i < size) {
-        pointer[i] = array[i];
-      } else {
-        pointer[i] = 0;
-      }
-    }
+  for (int i = 0; i < new_size; i++) {
+    pointer[i] = (i < size ? array[i] : 0);
   }
-  delete[] array;
+   delete[] array;
   return pointer;
 }
 
