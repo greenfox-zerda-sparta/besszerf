@@ -1,4 +1,3 @@
-#include <string>
 #include <iostream>
 
 using namespace std;
@@ -68,6 +67,8 @@ int main() {
   cout << "Size of the stack after pushing: " << my_stack->size << endl << "Popping the pushed value: ";
   cout << stack_pop(*my_stack) << endl;
   cout << "Size of the stack after popping: " << my_stack->size << endl;
-  cout << "Is the stack empty? " << is_empty(*my_stack) << endl;
+  cout << "Is the stack empty: " << is_empty(*my_stack) << endl;
+  delete[] my_stack->storage;
+  delete my_stack;
   return 0;
 }
