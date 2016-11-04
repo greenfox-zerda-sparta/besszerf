@@ -13,9 +13,7 @@ struct House {
 const int market_price = 400;
 
 bool is_worth_to_buy(const House &house) {
-  bool result = false;
-  if (house.price < market_price * house.area) result = true;
-  return result;
+  return house.price < market_price * house.area;
 }
 
 int sum__of_houses_is_worth_to_buy(const House* house, int len) {
@@ -43,10 +41,8 @@ void print_all_houses(const House *houses, int len) {
 House* reprice_houses(House* houses, int len) {
   House *houses_with_new_prices = new House[len];
   for (int i = 0; i < len; i++) {
-    houses_with_new_prices[i].address = houses[i].address;
+    houses_with_new_prices[i] = houses[i];
     houses_with_new_prices[i].price = houses[i].area * market_price;
-    houses_with_new_prices[i].rooms = houses[i].rooms;
-    houses_with_new_prices[i].area = houses[i].area;
   }
   return houses_with_new_prices;
 }

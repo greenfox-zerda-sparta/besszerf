@@ -26,15 +26,13 @@ float average_of_golds(const Pirate* pirate, int len) {
 }
 
 string richest_one_of_wooden_legged(const Pirate* pirate, int len) {
-  string richest_with_wooden_leg = "";
-  int golds = 0;
+  Pirate richest = {"", false, 0};
   for (int i = 0; i < len; i++) {
-    if (pirate[i].has_wooden_leg && pirate[i].gold_count > golds) {
-      golds = pirate[i].gold_count;
-      richest_with_wooden_leg = pirate[i].name;
-    }
+    if (pirate[i].has_wooden_leg && pirate[i].gold_count > richest.gold_count) {
+      richest = pirate[i];
+     }
   }
-  return richest_with_wooden_leg;
+  return richest.name;
 }
 // Create a function that takes an array of pirates (and it's length) then returns the sum of the golds of all pirates
 

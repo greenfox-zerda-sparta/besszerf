@@ -48,7 +48,7 @@ void set_grade(Student &student, Subject subject, int grade) {
 // Create a function that takes a Student as a reference and returns the subject
 // that the student has worst grade in
 
-string worst_subject_of(Student student) {
+string worst_subject_of(Student &student) {
   int worst_grade = student.grades[0].value;
   int worst_subject = student.grades[0].subject;
   for (int i = 1; i < student.grade_count; i++) {
