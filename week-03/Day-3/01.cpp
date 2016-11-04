@@ -42,6 +42,9 @@ void stack_push(Stack& stack, double value) {
 // It should reallocate the array inside by the decremented size, and copy it's values
 
 double stack_pop(Stack& stack) {
+  if (stack.size == 0) {
+  return 0;
+  }
   double result = stack.storage[stack.size-1];
   double* new_storage = new double[--stack.size];
   for (int i = 0; i < stack.size; i++) {
