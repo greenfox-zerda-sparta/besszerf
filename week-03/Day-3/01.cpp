@@ -1,3 +1,4 @@
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -32,8 +33,10 @@ void stack_push(Stack& stack, double value) {
   for (int i = 0; i < stack.size; i++) {
     new_storage[i] = i < stack.size-1 ? stack.storage[i] : value;
   }
+  Stack* new_stack = stack_construct(new_storage, stack.size);
   delete[] stack.storage;
-  stack.storage = new_storage;
+  delete &stack;
+  stack = *new_stack;
   }
 
 // Pop
@@ -42,16 +45,15 @@ void stack_push(Stack& stack, double value) {
 // It should reallocate the array inside by the decremented size, and copy it's values
 
 double stack_pop(Stack& stack) {
-  if (stack.size == 0) {
-  return 0;
-  }
   double result = stack.storage[stack.size-1];
   double* new_storage = new double[--stack.size];
   for (int i = 0; i < stack.size; i++) {
     new_storage[i] = stack.storage[i];
   }
+  Stack* new_stack = stack_construct(new_storage, stack.size);
   delete[] stack.storage;
-  stack.storage = new_storage;
+  delete &stack;
+  stack = *new_stack;
   return result;
 }
 
@@ -70,8 +72,6 @@ int main() {
   cout << "Size of the stack after pushing: " << my_stack->size << endl << "Popping the pushed value: ";
   cout << stack_pop(*my_stack) << endl;
   cout << "Size of the stack after popping: " << my_stack->size << endl;
-  cout << "Is the stack empty: " << is_empty(*my_stack) << endl;
-  delete[] my_stack->storage;
-  delete my_stack;
+  cout << "Is the stack empty? " << is_empty(*my_stack) << endl;
   return 0;
 }

@@ -185,5 +185,9 @@ int main() {
     node_at_index1 = list_at(*head, i);
     cout << "Value of the element " << i+1 << ": " << node_at_index1->data<< endl;
   }
+  delete head;
+  delete node_at_index1;
+  delete last_node;
+  delete another_head;
   return 0;
 }
