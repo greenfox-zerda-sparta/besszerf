@@ -34,10 +34,9 @@ void stack_push(Stack& stack, double value) {
     new_storage[i] = i < stack.size-1 ? stack.storage[i] : value;
   }
   Stack* new_stack = stack_construct(new_storage, stack.size);
-  delete[] stack.storage;
-  delete &stack;
   stack = *new_stack;
-  }
+  delete new_stack;
+}
 
 // Pop
 // It should return the value that was pushed the last time
@@ -51,8 +50,6 @@ double stack_pop(Stack& stack) {
     new_storage[i] = stack.storage[i];
   }
   Stack* new_stack = stack_construct(new_storage, stack.size);
-  delete[] stack.storage;
-  delete &stack;
   stack = *new_stack;
   return result;
 }
