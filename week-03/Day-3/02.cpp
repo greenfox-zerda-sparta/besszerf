@@ -49,7 +49,7 @@ double vector_at(Vector& v, unsigned int index) {
 
 void vector_insert(Vector& v, unsigned int index, double value) {
   double* new_storage = new double[++v.size];
-  for (int i = 0; i < v.size+1; i++) {
+  for (int i = 0; i < v.size; i++) {
     if (i < index) {
       new_storage[i] = v.storage[i];
     } else if (i == index) {
@@ -78,6 +78,9 @@ unsigned int vector_find(Vector& v, double value) {
 // It should reallocate the array
 
 void vector_remove(Vector& v, unsigned int index) {
+  if (index > v.size - 1) {
+    return;
+  }
   double* new_storage = new double[--v.size]; // This is is not a mistake, but...
   for (int i = 0; i < v.size; i++) {
     new_storage[i] = i < index ? v.storage[i] : v.storage[i+1]; // ... here I'm thinking like an experienced C++ coder! :)
@@ -96,8 +99,11 @@ void vector_remove(Vector& v, unsigned int index) {
 Vector* vector_concat(Vector& v1, Vector v2) {
   int new_size = v1.size+v2.size;
   double* new_storage = new double[new_size];
-  for (int i = 0; i < new_size; i++) {
-    new_storage[i] = i < v1.size ? v1.storage[i] : v2.storage[i-v1.size];
+  for (int i = 0; i < v1.size; i++) {
+    new_storage[i] = v1.storage[i];
+  }
+  for (int i = v1.size; i < v1.size + v2.size; ++i ){
+    new_storage[i] = v2.storage[i-v1.size];
   }
   Vector* new_vector = vector_construct(new_storage, new_size);
   return new_vector;

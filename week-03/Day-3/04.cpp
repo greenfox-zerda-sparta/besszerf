@@ -105,7 +105,8 @@ void list_insert(Node& head, unsigned int index, double value) {
 unsigned int list_find(Node& head, double value) {
   Node* temp = &head;
   unsigned int index_of_searched_node = 0;
-  for (; index_of_searched_node < list_length(head); index_of_searched_node++) {
+  unsigned int list_length = list_length(head);
+  for (; index_of_searched_node < list_length; index_of_searched_node++) {
     if (temp->data == value) {
       return index_of_searched_node;
     }
