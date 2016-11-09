@@ -16,9 +16,9 @@ string* Shape::getName() {
 }
 
 Shape::Shape(){
-  height = new float(0);
-  width = new float(0);
-  mArea = new float(0);
+  this->height = new float(0);
+  this->width = new float(0);
+  this->mArea = new float(0);
 };
 
 Shape::Shape(float height, float width) {

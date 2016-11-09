@@ -26,6 +26,8 @@ int main() {
   cout << "I am a...  " << *a->getName() << " ... my area is: " << a->get_area() << endl;
 
   a = triangle;
+  a->set_height(5);
+  a->set_width(10);
   cout << "I am a...  " << *a->getName()<< " ... my area is: " << a->get_area() << endl;
   delete shape;
   delete triangle;

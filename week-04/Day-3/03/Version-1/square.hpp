@@ -15,8 +15,6 @@ public:
 
 private:
   float calculate_area();
-  float height;
-  float width;
 
 };
 

@@ -15,8 +15,6 @@ class Triangle : public Shape {
 
   private:
     float calculate_area();
-    float height;
-    float width;
 
 };
 

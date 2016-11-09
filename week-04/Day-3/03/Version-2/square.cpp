@@ -6,15 +6,13 @@
 using namespace std;
 
 Square::Square(){
-  height = new float(0);
-  width = new float(0);
-  mArea = new float(0);
+  Shape();
 };
 
 Square::Square(float height, float width) {
-  this->height = new float(height);
-  this->width = new float(width);
-  mArea = new float(0);
+  Shape();
+  set_height(height);
+  set_width(width);
 }
 
 string* Square::getName() {
@@ -22,7 +20,7 @@ string* Square::getName() {
 }
 
 float Square::calculate_area() {
-  return *width * *height;
+  return get_width() * get_height();
 }
 
 float Square::get_area() {

@@ -17,8 +17,6 @@ int main() {
   Shape* shape = new Shape();
   Triangle* triangle = new Triangle(2, 3);
   Square* square = new Square(2, 3);
-  square->set_height(7);
-  square->set_width(10);
   Shape* a;
   cout << "I am a...  " << *shape->getName() << " ... my area is: " << shape->get_area() << endl;
   cout << "I am a...  " << *triangle->getName() << " ... my area is: " << triangle->get_area() << endl;

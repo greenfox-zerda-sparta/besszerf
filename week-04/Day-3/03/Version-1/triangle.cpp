@@ -7,15 +7,13 @@ using namespace std;
 
 
 Triangle::Triangle(){
-  height = 0;
-  width = 0;
-  mArea = 0;
+  Shape();
 };
 
 Triangle::Triangle(float height, float width) {
-  this->height = height;
-  this->width = width;
-  mArea = 0;
+  Shape();
+  set_height(height);
+  set_width(width);
 }
 
 string* Triangle::getName() {
@@ -23,7 +21,7 @@ string* Triangle::getName() {
 }
 
 float Triangle::calculate_area() {
-  return width*height/2;
+  return get_width() * get_height();
 }
 
 float Triangle::get_area() {
