@@ -1,13 +1,30 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "character.h"
 #include <ctime>
+#include <algorithm>    // std::random_shuffle
+#include <vector>       // std::vector
+#include "character.h"
 
 using namespace std;
 
+vector<int> random_numbers;
+int random_selector = 0;
+
+bool get_a_random(vector<int> &random_numbers) {
+  random_selector += rand();
+  random_shuffle ( random_numbers.begin(), random_numbers.end() );
+  return random_numbers[random_selector % 10];
+}
+
+
 int main() {
-  //RPG Game lite
+  srand(time(NULL));
+  int bools[] = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
+  for (int i = 0; i < 10; i++){
+      random_numbers.push_back(bools[i]);
+  }
+//RPG Game lite
       //Create a Character class with the following preferences:
       //name
       //character type (player/monster)
@@ -30,18 +47,17 @@ int main() {
       //character class into a seperate file  return 0;
   Character kingArthur("Arthur", 100, 30, 20);
   Character bloodBunny("Dragon", 100, 30, 20, 1);
-  int attacker = 0;
+  bool attacker = 0;
 
   while (kingArthur.get_health_points() > 0 && bloodBunny .get_health_points() > 0) {
-    srand(time(NULL));
     kingArthur.print_character();
     bloodBunny.print_character();
-    if (attacker == 0) {
+    if (attacker) {
       bloodBunny.attack(kingArthur);
     } else {
       kingArthur.attack(bloodBunny);
     }
-    attacker = rand() % 2;
+    attacker = get_a_random(random_numbers);
   }
   kingArthur.print_character();
   bloodBunny.print_character();

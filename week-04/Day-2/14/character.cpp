@@ -31,6 +31,7 @@ void Character::attack(Character& enemy) {
   } else {
     enemy.set_health_points (enemy.get_health_points() - result_of_attack);
   }    if (enemy.get_health_points() < 0) enemy.set_health_points(0);
+  cout << this->name << " attacks...\n";
 
 }
 const string Character::get_name() {
