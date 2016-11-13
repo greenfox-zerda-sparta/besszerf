@@ -32,7 +32,7 @@ void Node::setNext(Node* next) {
 Node::~Node() {
 }
 
-IntLinkedList::IntLinkedList(int mData) : IntList() {
+IntLinkedList::IntLinkedList(int mData) {
   firstNode = new Node(mData);
   IntList::setLength(IntList::getLength() + 1);
 }
