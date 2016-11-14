@@ -79,7 +79,7 @@ std::string Jukebox::get_top_rated_genre() {
   if (songs != 0) {
     int top_rated = 0;
     float top_score = get_rating_by(0);
-    for (unsigned int i = 0; i < 4; i++) {
+    for (unsigned int i = 0; i < sizeof(in_words)/sizeof(int); i++) {
       if (get_rating_by(i) > top_score) {
         top_rated = i;
       }
