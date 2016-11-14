@@ -13,7 +13,7 @@ using namespace std;
 Song::Song() {
   this->title = "";
   this->artist = "";
-  genre = 0;
+  genre = UNSPECIFIED;
   num_of_ratings = 0;
   sum_of_ratings = 0;
 
@@ -22,7 +22,7 @@ Song::Song() {
 Song::Song(string title, string artist) {
   this->title = title;
   this->artist = artist;
-  genre = 0;
+  genre = UNSPECIFIED;
   num_of_ratings = 0;
   sum_of_ratings = 0;
 }

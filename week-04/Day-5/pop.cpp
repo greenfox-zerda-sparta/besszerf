@@ -8,6 +8,6 @@
 #include "pop.h"
 
 Pop::Pop(std::string title, std::string artist) : Song(title, artist) {
-  genre = 2;
+  genre = POP;
 }
 

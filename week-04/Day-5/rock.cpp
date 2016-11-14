@@ -8,7 +8,7 @@
 #include "rock.h"
 
 Rock::Rock(std::string title, std::string artist) : Song(title, artist) {
-  genre = 1;
+  genre = ROCK;
 }
 
 bool Rock::rate(int _rate) {

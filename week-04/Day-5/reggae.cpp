@@ -10,7 +10,7 @@
 #include "reggae.h"
 
 Reggae::Reggae(std::string title, std::string artist) : Song(title, artist) {
-  genre = 3;
+  genre = REGGAE;
 }
 
 bool Reggae::rate(int _rate) {

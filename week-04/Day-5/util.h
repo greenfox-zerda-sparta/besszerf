@@ -11,6 +11,5 @@
 
 enum {UNSPECIFIED, ROCK, POP, REGGAE};
 extern std::string in_words[4];
-;
 
 #endif /* UTIL_H_ */
