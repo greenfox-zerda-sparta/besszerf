@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string opening_error = "Could not open file";
+const string opening_error = "Could not open file";
 
 string read_file(string file_name);
 void print_to_file(string file_name, string content);
