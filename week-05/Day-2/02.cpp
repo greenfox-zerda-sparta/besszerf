@@ -11,7 +11,9 @@ int main() {
     ifstream my_file;
     my_file.open("second-exercise.txt");
     string content;
-    my_file >> content;
-    cout << content << endl;
+    while (my_file >> content) {
+      cout << content << endl;
+    }
+    my_file.close();
     return 0;
 }

@@ -8,7 +8,7 @@ int main() {
   // Write your name in it as a single line
   ofstream myfile;
   myfile.open("example.txt");
-  myfile << "Ferenc Besszer";
+  myfile << "Ferenc Besszer\n";
   myfile.close();
   return 0;
 }
