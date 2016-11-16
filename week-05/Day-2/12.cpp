@@ -9,8 +9,6 @@ void print_decrypted(string line);
 bool is_open = true;
 
 int main() {
-  // Create a program that decrypts the file called "reversed-order.txt",
-  // and pritns the decrypred text to the terminal window.
   read_input("encrypted.txt");
   if (!is_open) {
     cerr << "Could not open file";
