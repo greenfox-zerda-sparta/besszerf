@@ -46,6 +46,10 @@ TodoHandler::~TodoHandler() {
   }
   FileHandler file_handler(TODO_FILE);
   file_handler.print_to_file(content);
+  for (unsigned int i = 0; i < todos.size(); i++) {
+    delete todos[i];
+    todos.erase(todos.begin() + i);
+  }
 }
 
 void TodoHandler::add_todo(Todo* todo) {

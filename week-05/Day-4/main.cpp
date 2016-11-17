@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
    Refactor the application to align with the proposed architecture
    Write unittests for any unit it feels possible
    */
+
   TodoHandler my_app;
   if (argc == 1) {
     my_app.print_usage();
@@ -64,7 +65,7 @@ int main(int argc, char* argv[]) {
         cerr << "Unable to remove: Index is not a number\n";
         return 1;
       }
-      int a2 = atoi(arg2.c_str());
+      unsigned int a2 = (unsigned int)atoi(arg2.c_str());
       if (a2 > my_app.get_count_of_todos() || a2 < 1) {
         cerr << "Unable to remove: Index is out of bound\n";
          return 1;
@@ -76,7 +77,7 @@ int main(int argc, char* argv[]) {
         cerr << "Unable to check: Index is not a number\n";
         return 1;
       } else {
-        int a2 = atoi(arg2.c_str());
+        unsigned int a2 = (unsigned int)atoi(arg2.c_str());
         if (a2 > my_app.get_count_of_todos() || a2 < 1) {
           cerr << "Unable to check: Index is out of bound\n";
         }
@@ -88,22 +89,10 @@ int main(int argc, char* argv[]) {
       cerr << "Unsupported argument\n";
       return 1;
     }
+  } else {
+    cerr << "Too many arguments\n";
+    return 1;
   }
-  /*
-   Command line arguments:
-   -l   Lists all the tasks
-   -a   Adds a new task
-   -r   Removes an task
-   -c   Completes an task
-   */
-  /*  Todo* my_todo = new Todo("1. Feed the dog", 1, "On Saturday feed the fuckin' dog of my mother.");
-   Todo* my_todo2 = new Todo("2. Feed the dog", 1, "On Saturday feed the fuckin' dog of my mother.");
-   Todo* my_todo3 = new Todo("3. Feed the dog", 1, "On Saturday feed the fuckin' dog of my mother.");
-   //  cout << my_todo->print_todo();
-   my_app.add_todo(my_todo);
-   my_app.add_todo(my_todo2);
-   my_app.add_todo(my_todo3);
-   */
   return 0;
 }
 
