@@ -59,6 +59,15 @@ void Todo::print_todo() {
   std::cout << bracket << this->title << std::endl;
 }
 
+void Todo::full_print_todo() {
+  std::string bracket;
+  if (this->state == 0) bracket = "* Initialised";
+  if (this->state == 1) bracket = "* Planned";
+  if (this->state == 2) bracket = "* Ongoing ]";
+  if (this->state == 3) bracket = "* Completed";
+  std::cout << "    " << this->title << "\n" << "    "<< bracket << "\n" << "    " << this->description << std::endl;
+}
+
 void Todo::set_title(std::string title) {
   this->title = title;
 }

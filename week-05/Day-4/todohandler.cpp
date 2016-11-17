@@ -32,9 +32,14 @@ void TodoHandler::print_usage() const {
   cout << "==================== \n\n";
   cout << "Command line arguments:\n";
   cout << " -l   Lists all the tasks\n";
+  cout << " -lf  Make a full list of all the tasks\n";
   cout << " -a   Adds a new task\n";
+  cout << " -d   Sets description to task at given index.\n";
+  cout << "         Should use: todos -d index description.\n";
   cout << " -r   Removes a task\n";
-  cout << " -c   Completes a task\n\n";
+  cout << " -o   Change state a task to 'ongoing'\n";
+  cout << " -c   Completes a task\n";
+  cout << " -p   Change state a task back to 'planned'\n\n";
 }
 
 TodoHandler::~TodoHandler() {
@@ -77,6 +82,13 @@ void TodoHandler::list_tasks() {
   }
 }
 
+void TodoHandler::full_list() {
+  for (unsigned int i = 0; i < todos.size(); i++) {
+    cout << i +1  << ". Todo\n";
+    todos[i]->full_print_todo();
+  }
+}
+
 void TodoHandler::remove_todo(unsigned int index) {
   delete todos[index - 1];
   todos.erase(todos.begin() + index - 1);
@@ -88,3 +100,17 @@ void TodoHandler::complete_todo(unsigned int index) {
   std::cout << "State of todo " << index <<" is changed to 'completed'. \n";
 }
 
+void TodoHandler::change_state_to_ongoing(unsigned int index) {
+  todos[index - 1]->set_state("2");
+  std::cout << "State of todo " << index <<" is changed to 'ongoing'. \n";
+}
+
+void TodoHandler::change_state_to_planned(unsigned int index) {
+  todos[index - 1]->set_state("1");
+  std::cout << "State of todo " << index <<" is changed to 'planned'. \n";
+}
+
+void TodoHandler::set_description(unsigned int index, string description) {
+  todos[index - 1]->set_description(description);
+  std::cout << "Description of todo " << index <<" is set to the given. \n";
+}

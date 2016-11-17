@@ -30,7 +30,11 @@ class TodoHandler {
     void add_todo(std::string title);
     void remove_todo(unsigned int index);
     void complete_todo(unsigned int index);
+    void change_state_to_ongoing(unsigned int index);
+    void change_state_to_planned(unsigned int index);
     void list_tasks();
+    void full_list();
+    void set_description(unsigned int index, std::string description);
 };
 
 #endif /* TODOHANDLER_H_ */

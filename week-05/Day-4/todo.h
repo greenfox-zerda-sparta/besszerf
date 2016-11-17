@@ -27,6 +27,7 @@ class Todo {
     Todo(std::string title, std::string description);
     Todo(std::string title, unsigned int state, std::string description);
     void print_todo();
+    void full_print_todo();
     std::string go_to_sleep_todo();
     void set_title(std::string title);
     void set_state(std::string state);
