@@ -80,6 +80,7 @@ int main(int argc, char* argv[]) {
         unsigned int a2 = (unsigned int)atoi(arg2.c_str());
         if (a2 > my_app.get_count_of_todos() || a2 < 1) {
           cerr << "Unable to check: Index is out of bound\n";
+          return 1;
         }
         my_app.complete_todo(a2);
       }
