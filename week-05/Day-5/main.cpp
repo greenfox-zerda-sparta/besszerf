@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
     }
     return 1;
   }
-  cerr << "Unsupported argument\n";
+  cerr << "Unsupported argument: " << argv[1] << "\n";
   my_app.print_usage(argv);
   return 1;
 }
