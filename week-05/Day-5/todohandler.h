@@ -1,10 +1,3 @@
-/*
- * todohandler.h
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
-
 #ifndef TODOHANDLER_H_
 #define TODOHANDLER_H_
 #include <string>
@@ -25,7 +18,7 @@ class TodoHandler {
     TodoHandler(std::string title, std::string description);
     ~TodoHandler();
     unsigned int get_count_of_todos();
-    void print_usage(char** arg) const;
+    int print_usage(char** arg) const;
     void add_todo(Todo* todo);
     int add_todo(int argc, char** arg);
     int remove_todo(int argc, char** arg);

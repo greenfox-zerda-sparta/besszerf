@@ -1,10 +1,3 @@
-/*
- * todo.h
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
-
 #ifndef TODO_H_
 #define TODO_H_
 #include <string>

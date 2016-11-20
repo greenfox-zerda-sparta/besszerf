@@ -1,9 +1,3 @@
-/*
- * todohandler.cpp
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
 #include <iostream>
 #include <string>
 #include <stdlib.h>     /* atoi */
@@ -26,7 +20,7 @@ TodoHandler::TodoHandler() {
   }
 }
 
-void TodoHandler::print_usage(char ** arg) const {
+int TodoHandler::print_usage(char ** arg) const {
   cout << "\nCLI Todo application\n";
   cout << "==================== \n\n";
   cout << "Command line arguments:\n";
@@ -39,6 +33,7 @@ void TodoHandler::print_usage(char ** arg) const {
   cout << " -o   Change state a task to 'ongoing'\n";
   cout << " -c   Completes a task\n";
   cout << " -p   Change state a task back to 'planned'\n\n";
+  return 0;
 }
 
 TodoHandler::~TodoHandler() {

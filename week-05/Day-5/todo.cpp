@@ -1,9 +1,3 @@
-/*
- * todo.cpp
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
 #include <iostream>
 #include <string>
 #include <sstream>

@@ -1,9 +1,3 @@
-/*
- * stringmanipulation.cpp
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
 #include "texthandler.h"
 
 #include <iostream>
@@ -76,4 +70,3 @@ bool TextHandler::is_a_number(std::string str) {
   }
   return result;
 }
-

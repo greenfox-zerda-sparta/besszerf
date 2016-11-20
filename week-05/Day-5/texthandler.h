@@ -1,10 +1,3 @@
-/*
- * stringmanipulation.h
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
-
 #ifndef TEXTHANDLER_H_
 #define TEXTHANDLER_H_
 #include <iostream>

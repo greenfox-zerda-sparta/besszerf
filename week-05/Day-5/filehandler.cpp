@@ -1,9 +1,3 @@
-/*
- * filehandler.cpp
- *
- *  Created on: 2016.11.16.
- *      Author: caruzzo74
- */
 #include <fstream>
 #include <string>
 #include "filehandler.h"
@@ -13,7 +7,6 @@ using namespace std;
 FileHandler::FileHandler(string file_name) {
   this->file_name = file_name;
 }
-
 
 string FileHandler::read_file() {
   ifstream file;
@@ -37,5 +30,3 @@ void FileHandler::print_to_file(string content) {
   file << content;
   file.close();
 }
-
-
