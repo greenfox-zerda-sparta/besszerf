@@ -27,14 +27,14 @@ class TodoHandler {
     unsigned int get_count_of_todos();
     void print_usage(char** arg) const;
     void add_todo(Todo* todo);
-    bool add_todo(int argc, char** arg);
-    bool remove_todo(int argc, char** arg);
-    bool complete_todo(int argc, char** arg);
-    bool change_state_to_ongoing(int argc, char** arg);
-    bool change_state_to_planned(int argc, char** arg);
-    void list_tasks();
-    void full_list();
-    bool set_description(int argc, char** arg);
+    int add_todo(int argc, char** arg);
+    int remove_todo(int argc, char** arg);
+    int complete_todo(int argc, char** arg);
+    int change_state_to_ongoing(int argc, char** arg);
+    int change_state_to_planned(int argc, char** arg);
+    int list_tasks();
+    int full_list();
+    int set_description(int argc, char** arg);
 };
 
 #endif /* TODOHANDLER_H_ */

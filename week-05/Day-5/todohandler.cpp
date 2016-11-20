@@ -62,10 +62,10 @@ void TodoHandler::add_todo(Todo* todo) {
   }
 }
 
-bool TodoHandler::add_todo(int argc, char** arg) {
+int TodoHandler::add_todo(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to add: No task is provided\n";
-    return false;
+    return 1;
   }
   string message = "New ";
   if (argc > 3) {
@@ -77,31 +77,33 @@ bool TodoHandler::add_todo(int argc, char** arg) {
   new_todo->set_state("1");
   todos.push_back(new_todo);
   std::cout << message << "todo is added. \n";
-  return true;
+  return 0;
 }
 
 unsigned int TodoHandler::get_count_of_todos() {
   return todos.size();
 }
 
-void TodoHandler::list_tasks() {
+int TodoHandler::list_tasks() {
   for (unsigned int i = 0; i < todos.size(); i++) {
     cout << i +1  << " ";
     todos[i]->print_todo();
   }
+  return 0;
 }
 
-void TodoHandler::full_list() {
+int TodoHandler::full_list() {
   for (unsigned int i = 0; i < todos.size(); i++) {
     cout << i +1  << ". Todo\n";
     todos[i]->full_print_todo();
   }
+  return 0;
 }
 
-bool TodoHandler::remove_todo(int argc, char** arg) {
+int TodoHandler::remove_todo(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to remove: Index is not a number\n";
-    return false;
+    return 1;
   }
   string message = "Todo ";
   if (argc > 3) {
@@ -111,24 +113,24 @@ bool TodoHandler::remove_todo(int argc, char** arg) {
   TextHandler clarg;
   if (!clarg.is_a_number(arg2)) {
     cerr << "Unable to remove: Index is not a number\n";
-    return false;
+    return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
 cout << a2 << endl;
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to remove: Index is out of bound\n";
-     return false;
+     return 1;
   }
   delete todos[a2 - 1];
   todos.erase(todos.begin() + a2 - 1);
   std::cout << message << a2 << " is removed. \n";
-  return true;
+  return 0;
 }
 
-bool TodoHandler::complete_todo(int argc, char** arg) {
+int TodoHandler::complete_todo(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to check: Index is not a number\n";
-    return false;
+    return 1;
   }
   string message = "Todo ";
   if (argc > 3) {
@@ -138,22 +140,22 @@ bool TodoHandler::complete_todo(int argc, char** arg) {
   TextHandler clarg;
   if (!clarg.is_a_number(arg2)) {
     cerr << "Unable to check: Index is not a number\n";
-    return false;
+    return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to check: Index is out of bound\n";
-     return false;
+     return 1;
   }
   todos[a2 - 1]->set_state("3");
   std::cout << message << a2 << " state is changed to 'completed'. \n";
-  return true;
+  return 0;
 }
 
-bool TodoHandler::change_state_to_ongoing(int argc, char** arg) {
+int TodoHandler::change_state_to_ongoing(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to change state: Index is not a number\n";
-    return false;
+    return 1;
   }
   string message = "Todo ";
   if (argc > 3) {
@@ -163,22 +165,22 @@ bool TodoHandler::change_state_to_ongoing(int argc, char** arg) {
   TextHandler clarg;
   if (!clarg.is_a_number(arg2)) {
     cerr << "Unable to change state: Index is not a number\n";
-    return false;
+    return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to change state: Index is out of bound\n";
-     return false;
+     return 1;
   }
   todos[a2 - 1]->set_state("2");
   std::cout << message << a2 << " state is changed to 'ongoing'. \n";
-  return true;
+  return 0;
 }
 
-bool TodoHandler::change_state_to_planned(int argc, char** arg) {
+int TodoHandler::change_state_to_planned(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to change state: Index is not a number\n";
-    return false;
+    return 1;
   }
   string message = "Todo ";
   if (argc > 3) {
@@ -188,23 +190,23 @@ bool TodoHandler::change_state_to_planned(int argc, char** arg) {
   TextHandler clarg;
   if (!clarg.is_a_number(arg2)) {
     cerr << "Unable to change state: Index is not a number\n";
-    return false;
+    return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to change state: Index is out of bound\n";
-     return false;
+     return 1;
   }
   todos[a2 - 1]->set_state("1");
   std::cout << message << a2 << " state is changed back to 'planned'. \n";
-  return true;
+  return 0;
 }
 
-bool TodoHandler::set_description(int argc, char** arg) {
+int TodoHandler::set_description(int argc, char** arg) {
   if (argc < 4) {
     cerr << "Unable set description: Too few arguments.\n";
     cerr << "Usage: " << arg[0] << " -d index description\n";
-    return false;
+    return 1;
   }
   string message = "Todo ";
   if (argc > 4) {
@@ -216,14 +218,14 @@ bool TodoHandler::set_description(int argc, char** arg) {
   if (!clarg.is_a_number(arg2)) {
     cerr << "Unable to set description: Index is not a number\n";
     cerr << "Usage: " << arg[0] << " -d index description\n";
-    return false;
+    return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to set description: Index is out of bound\n";
-     return false;
+     return 1;
   }
   todos[a2 - 1]->set_description(arg3);
   std::cout << "Description of todo " << a2 <<" is set to the given. \n";
-  return true;
+  return 0;
 }
