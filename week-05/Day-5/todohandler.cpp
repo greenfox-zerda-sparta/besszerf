@@ -84,6 +84,7 @@ int TodoHandler::list_tasks() {
     cout << i +1  << " ";
     todos[i]->print_todo();
   }
+  if (todos.size() == 0) cout << "No todos for today! :)\n";
   return 0;
 }
 
@@ -92,6 +93,7 @@ int TodoHandler::full_list() {
     cout << i +1  << ". Todo\n";
     todos[i]->full_print_todo();
   }
+  if (todos.size() == 0) cout << "No todos for today! :)\n";
   return 0;
 }
 
@@ -111,7 +113,6 @@ int TodoHandler::remove_todo(int argc, char** arg) {
     return 1;
   }
   unsigned int a2 = (unsigned int)atoi(arg2.c_str());
-cout << a2 << endl;
   if (a2 > get_count_of_todos() || a2 < 1) {
     cerr << "Unable to remove: Index is out of bound\n";
      return 1;
