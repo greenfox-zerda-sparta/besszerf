@@ -57,7 +57,7 @@ void TodoHandler::add_todo(Todo* todo) {
   }
 }
 
-int TodoHandler::add_todo(int argc, char** arg) {
+int TodoHandler::add_todo_from_cl(int argc, char** arg) {
   if (argc < 3) {
     cerr << "Unable to add: No task is provided\n";
     return 1;

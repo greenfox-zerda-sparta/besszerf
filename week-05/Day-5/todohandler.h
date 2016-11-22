@@ -12,15 +12,13 @@ class TodoHandler {
     const std::string CONSERVING_CLOSING_TAG_TO_OBJECT = "}\n";
     std::vector<Todo*> todos;
     std::vector<std::string> todos_in_string;
+    unsigned int get_count_of_todos();
+    void add_todo(Todo* todo);
   public:
     TodoHandler();
-    TodoHandler(std::string title);
-    TodoHandler(std::string title, std::string description);
     ~TodoHandler();
-    unsigned int get_count_of_todos();
     int print_usage(char** arg) const;
-    void add_todo(Todo* todo);
-    int add_todo(int argc, char** arg);
+    int add_todo_from_cl(int argc, char** arg);
     int remove_todo(int argc, char** arg);
     int complete_todo(int argc, char** arg);
     int change_state_to_ongoing(int argc, char** arg);

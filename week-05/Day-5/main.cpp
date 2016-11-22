@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
   string arg1 = (string)argv[1];
   if (arg1 == "-l") return my_app.list_tasks();
   if (arg1 == "-lf") return my_app.full_list();
-  if (arg1 == "-a") return my_app.add_todo(argc, argv);
+  if (arg1 == "-a") return my_app.add_todo_from_cl(argc, argv);
   if (arg1 == "-c") return my_app.complete_todo(argc, argv);
   if (arg1 == "-p") return my_app.change_state_to_planned(argc, argv);
   if (arg1 == "-o") return my_app.change_state_to_ongoing(argc, argv);

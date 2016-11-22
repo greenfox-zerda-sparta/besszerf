@@ -18,17 +18,12 @@ class Todo {
   public:
     Todo();
     Todo(std::string sleeping_todo);
-    Todo(std::string title, std::string description);
-    Todo(std::string title, unsigned int state, std::string description);
     void print_todo();
     void full_print_todo();
     std::string go_to_sleep_todo();
     void set_title(std::string title);
     void set_state(std::string state);
     void set_description(std::string description);
-    std::string get_title();
-    unsigned int get_state();
-    std::string get_description();
 };
 
 #endif /* TODO_H_ */

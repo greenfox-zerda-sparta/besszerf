@@ -21,18 +21,6 @@ Todo::Todo(std::string sleeping_todo) {
   this->description = string_todo.get_substring();
 }
 
-Todo::Todo(std::string title, std::string description) {
-  this->title = title;
-  state = 0;
-  this->description = description;
-}
-
-Todo::Todo(std::string title, unsigned int state, std::string description) {
-  this->title = title;
-  this->state = state;
-  this->description = description;
-}
-
 std::string Todo::go_to_sleep_todo() {
   std::string output;
   output += CONSERVING_BEGINNING_TAG_TO_TITLE + this->title + CONSERVING_CLOSING_TAG_TO_ALL;
@@ -57,7 +45,7 @@ void Todo::full_print_todo() {
   std::string bracket;
   if (this->state == 0) bracket = "* Initialised";
   if (this->state == 1) bracket = "* Planned";
-  if (this->state == 2) bracket = "* Ongoing ]";
+  if (this->state == 2) bracket = "* Ongoing";
   if (this->state == 3) bracket = "* Completed";
   std::cout << "    " << this->title << "\n" << "    "<< bracket << "\n" << "    " << this->description << std::endl;
 }
@@ -70,13 +58,4 @@ void Todo::set_state(std::string str_state) {
 }
 void Todo::set_description(std::string description) {
   this->description = description;
-}
-std::string Todo::get_title() {
-  return title;
-}
-unsigned int Todo::get_state() {
-  return state;
-}
-std::string Todo::get_description() {
-  return description;
 }
