@@ -1,5 +1,6 @@
 #ifndef FILEHANDLER_H_
 #define FILEHANDLER_H_
+#include <string> 
 
 class FileHandler {
   private:
