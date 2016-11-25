@@ -34,7 +34,8 @@ string get_plate(vector<int>& num_pool) {
   num_pool.erase(num_pool.begin() + index);
   stringstream input;
   if (num < 10) {
-    input << 00;
+    input << 0;
+    input << 0;
   } else if (num < 100) {
     input << 0;
   }
@@ -102,12 +103,14 @@ int main() {
     }
   }
   cout << "Sárga Zsiguli:" << endl;
+  int counter = 0;
   for (int i = 0; i < floors_in_building; i++) {
     for (int j = 0; j < rows_in_floor; j++) {
       for (int k = 0; k < cars_in_row; k++) {
         if (parking_house[i][j][k]->type == "Zsiguli" && parking_house[i][j][k]->color == "Sárga") {
-          cout << " Plate number: " << parking_house[i][j][k]->plate_num << "\tFloor: " << i + 1 << " Row: " << j + 1 << " Spot: " << k + 1 << endl;
-          parking_house[i][j][k];
+        counter++;
+        cout << counter << ".\t"<< parking_house[i][j][k]->color << " " << parking_house[i][j][k]->type << " (";
+        cout << "Plate number: " << parking_house[i][j][k]->plate_num << "; Floor/Row/Spot: " << i + 1 << "/" << j + 1 << "/" << k + 1 << ")"<< endl;
         }
       }
     }
