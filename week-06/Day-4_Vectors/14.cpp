@@ -23,20 +23,15 @@ Car::Car() {
   plate_num = "";
 }
 
-int size = 1000;
-
-string get_plate(int* num_pool) {
+string get_plate(vector<int>& num_pool) {
   string platenum = "";
   for (int i = 0; i < 3; i++) {
     platenum += (rand() %26) + 65;
   }
   platenum += "-";
-  int index = rand() %1000;
+  int index = rand() %num_pool.size();
   int num = num_pool[index];
-  int temp = num_pool[size -1];
-  num_pool[size - 1] = index;
-  index = temp;
-  size--;
+  num_pool.erase(num_pool.begin() + index);
   stringstream input;
   if (num < 10) {
     input << 00;
@@ -67,9 +62,11 @@ int main() {
   //At the end empty the parking house!
 
   srand(time(NULL));
-  int* num_pool = new int[1000];
+//  int* num_pool = new int[1000];
+  vector<int> num_pool;
+  num_pool.reserve(1000);
   for (int i = 0; i < 1000; i++) {
-    num_pool[i] = i;
+    num_pool.push_back(i);
   }
   for (int i = 0; i < 1000; i++) {
       int r = rand() % 1000;
@@ -112,6 +109,14 @@ int main() {
           cout << " Plate number: " << parking_house[i][j][k]->plate_num << "\tFloor: " << i + 1 << " Row: " << j + 1 << " Spot: " << k + 1 << endl;
           parking_house[i][j][k];
         }
+      }
+    }
+  }
+
+  for (int i = 0; i < floors_in_building; i++) {
+    for (int j = 0; j < rows_in_floor; j++) {
+      for (int k = 0; k < cars_in_row; k++) {
+        delete parking_house[i][j][k];
       }
     }
   }
