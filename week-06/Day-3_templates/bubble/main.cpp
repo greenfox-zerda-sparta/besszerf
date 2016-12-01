@@ -7,7 +7,7 @@ int board_height = 10;
 int board_width = 10;
 int number_of_bubbles = 10;
 int move_units_max = 3;
-int num_of_turns = 2;
+int num_of_turns = 10;
 
 int main() {
   //Bubble Game!!!!
@@ -20,7 +20,7 @@ int main() {
   //You have to run the games for 10 rounds
   //In each round the bubble move from their spot to the next spot pointed with its direction vector
   //After 10 rounds print how many times did the balls collide, and how many times did they hit the wall
-
+  srand(time(NULL));
   Board<int> bubble_board;
   bubble_board.print_board();
   for (int i = 0; i < num_of_turns; i++) {

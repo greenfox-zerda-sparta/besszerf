@@ -31,8 +31,10 @@ class Board {
     static uint collisions;
     void reset_board();
     void put_bubble_on_board();
+    bool is_a_wrong_position();
   public:
     Board();
+    ~Board();
     void next_turn();
     void print_board();
     void move_bubble();
@@ -41,6 +43,16 @@ class Board {
     Bubble get_bubble();
 
 };
+
+template<class T>
+bool Board<T>::is_a_wrong_position() {
+  for (uint i = 0; i < bubbles.size(); i++) {
+    if (bubbles[i]->get_position() == bubble->get_position() ) {
+      return true;
+    }
+  }
+  return false;
+}
 
 template<class T>
 uint Board<T>::game_map_rows = board_height;
@@ -57,10 +69,21 @@ Board<T>::Board() {
   for (int i = 0; i < number_of_bubbles; i++) {
     std::cout << i << ". ";
     bubble = new Bubble();
+    while (is_a_wrong_position()) {
+      delete bubble;
+      bubble = new Bubble();
+    }
     put_bubble_on_board();
     bubbles.push_back(bubble);
   }
   bubble = NULL;
+}
+
+template<class T>
+Board<T>::~Board() {
+  for (int i = 0; i < number_of_bubbles; i++) {
+    delete bubbles[i];
+  }
 }
 
 template<class T>
@@ -106,6 +129,7 @@ void Board<T>::put_bubble_on_board() {
     return;
   } else if (game_map[x][y] == "1") {
     collisions++;
+    std::cout << "New collision!" << std::endl;
   }
   int num_of_bubbles_on_same_place = atoi(game_map[x][y].c_str()) + 1;
   std::stringstream to_string;

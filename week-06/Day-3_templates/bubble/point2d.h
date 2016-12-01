@@ -13,6 +13,7 @@ class Point2d {
     int x;
     int y;
   public:
+    bool operator == (const Point2d&);
     void set_x(int x);
     void set_y(int y);
     int get_x();
