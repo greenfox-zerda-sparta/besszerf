@@ -9,17 +9,7 @@
 #define BUBBLE_H_
 #include <stdlib.h>     /* srand, rand */
 #include <iostream>
-
-class Point2d {
-  private:
-    int x;
-    int y;
-  public:
-    void set_x(int x);
-    void set_y(int y);
-    int get_x();
-    int get_y();
-};
+#include "point2d.h"
 
 class Bubble {
   private:
