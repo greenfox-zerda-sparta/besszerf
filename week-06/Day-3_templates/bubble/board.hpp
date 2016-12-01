@@ -29,6 +29,8 @@ class Board {
     Board();
     void print_board();
     void move_bubble();
+    uint get_wall_hits();
+    Bubble get_bubble();
 
 };
 
@@ -59,7 +61,17 @@ uint Board<T>::wall_hits = 0;
 
 template<class T>
 void Board<T>::move_bubble() {
-  bubble->move();
+  wall_hits += bubble->move();
+}
+
+template<class T>
+uint Board<T>::get_wall_hits() {
+  return wall_hits;
+}
+
+template<class T>
+Bubble Board<T>::get_bubble() {
+  return *bubble;
 }
 
 #endif /* BOARD_HPP_ */

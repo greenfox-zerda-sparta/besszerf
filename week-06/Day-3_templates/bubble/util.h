@@ -10,5 +10,6 @@
 
 extern int board_width;
 extern int board_height;
+extern int move_units_max;
 
 #endif /* UTIL_H_ */

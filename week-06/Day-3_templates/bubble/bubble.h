@@ -20,6 +20,10 @@ class Bubble {
     static int min_x_position;
     static int max_y_position;
     static int min_y_position;
+    void calculate_position(Point2d* temp_pos, int &wall_hits_in_turn);
+    int get_wall_hits(Point2d* temp_pos);
+    void change_speed_x_direction();
+    void change_speed_y_direction();
   public:
     Bubble();
     int move();

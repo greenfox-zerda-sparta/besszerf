@@ -1,3 +1,4 @@
+#include <iostream>
 #include "board.hpp"
 #include "bubble.h"
 using namespace std;
@@ -18,7 +19,10 @@ int main() {
   //After 10 rounds print how many times did the balls collide, and how many times did they hit the wall
 
   Board<int> bubble_board;
-  bubble_board.print_board();
-  bubble_board.move_bubble();
+//  bubble_board.print_board();
+  for (int i = 0; i < 18; i++) {
+    bubble_board.move_bubble();
+  }
+  cout << bubble_board.get_wall_hits() << endl;
   return 0;
 }
