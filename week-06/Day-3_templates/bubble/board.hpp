@@ -12,6 +12,8 @@
 #include <iostream>
 #include "bubble.h"
 #include "util.h"
+#include <cstdlib>
+#include <sstream>
 
 typedef unsigned int uint;
 typedef std::vector<std::string> _row;
@@ -26,6 +28,7 @@ class Board {
     static uint game_map_columns;
     static uint game_map_rows;
     static uint wall_hits;
+    static uint collisions;
     void reset_board();
     void put_bubble_on_board();
   public:
@@ -34,6 +37,7 @@ class Board {
     void print_board();
     void move_bubble();
     uint get_wall_hits();
+    uint get_collisions();
     Bubble get_bubble();
 
 };
@@ -43,6 +47,9 @@ uint Board<T>::game_map_rows = board_height;
 
 template<class T>
 uint Board<T>::game_map_columns = board_width;
+
+template<class T>
+uint Board<T>::collisions = 0;
 
 template<class T>
 Board<T>::Board() {
@@ -94,7 +101,17 @@ template<class T>
 void Board<T>::put_bubble_on_board() {
   int y = bubble->get_position().get_x();
   int x = board_height -1 - bubble->get_position().get_y();
-  game_map[x][y] = "*";
+  if (game_map[x][y] == "0") {
+    game_map[x][y] = "1";
+    return;
+  } else if (game_map[x][y] == "1") {
+    collisions++;
+  }
+  int num_of_bubbles_on_same_place = atoi(game_map[x][y].c_str()) + 1;
+  std::stringstream to_string;
+  to_string << num_of_bubbles_on_same_place;
+  game_map[x][y] = to_string.str();
+
 }
 
 template<class T>
@@ -105,6 +122,11 @@ void Board<T>::next_turn() {
       move_bubble();
     }
     print_board();
+}
+
+template<class T>
+uint Board<T>::get_collisions() {
+  return collisions;
 }
 
 #endif /* BOARD_HPP_ */

@@ -7,6 +7,7 @@ int board_height = 10;
 int board_width = 10;
 int number_of_bubbles = 10;
 int move_units_max = 3;
+int num_of_turns = 2;
 
 int main() {
   //Bubble Game!!!!
@@ -22,9 +23,11 @@ int main() {
 
   Board<int> bubble_board;
   bubble_board.print_board();
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < num_of_turns; i++) {
     bubble_board.next_turn();
   }
-  cout << bubble_board.get_wall_hits() << endl;
+  cout << "During " << num_of_turns << " turns:" << endl;
+      cout << "   Bubbles hit the wall: " << bubble_board.get_wall_hits() << " times."<< endl;
+  cout << "   Collisions: " << bubble_board.get_collisions() << endl;
   return 0;
 }
