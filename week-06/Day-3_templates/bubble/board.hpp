@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "bubble.h"
 
 typedef unsigned int uint;
 typedef std::vector<std::string> _row;
@@ -19,12 +20,14 @@ template<class T>
 class Board {
   private:
     _board game_map;
+    Bubble* bubble;
     static uint game_map_columns;
     static uint game_map_rows;
     static uint wall_hits;
   public:
     Board();
     void print_board();
+    void move_bubble();
 
 };
 
@@ -37,6 +40,7 @@ uint Board<T>::game_map_columns = 10;
 template<class T>
 Board<T>::Board() {
     game_map = _board(game_map_rows, _row(game_map_columns, "0"));
+    bubble = new Bubble();
 }
 
 template<class T>
@@ -52,5 +56,9 @@ void Board<T>::print_board() {
 template<class T>
 uint Board<T>::wall_hits = 0;
 
+template<class T>
+void Board<T>::move_bubble() {
+  bubble->move();
+}
 
 #endif /* BOARD_HPP_ */

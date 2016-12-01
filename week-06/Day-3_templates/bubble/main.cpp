@@ -16,7 +16,6 @@ int main() {
 
   Board<int> bubble_board;
   bubble_board.print_board();
-  Bubble bubble;
-  bubble.move();
+  bubble_board.move_bubble();
   return 0;
 }

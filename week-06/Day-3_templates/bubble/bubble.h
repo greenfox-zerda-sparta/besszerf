@@ -17,7 +17,7 @@ class Bubble {
     Point2d speed_vector;
   public:
     Bubble();
-    void move();
+    int move();
     Point2d get_position();
     Point2d get_speed_vector();
     void set_position(int x, int y);

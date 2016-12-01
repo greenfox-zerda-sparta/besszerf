@@ -15,8 +15,10 @@ Bubble::Bubble() {
   std::cout << "   Speed vector (x, y) = ("<< speed_vector.get_x() << ", " << speed_vector.get_y() << ")"<< std::endl;
 }
 
-void Bubble::move() {
+int Bubble::move() {
+  int wall_hits_count = 0;
   position.set_x(position.get_x() + speed_vector.get_x());
   position.set_y(position.get_y() + speed_vector.get_y());
   std::cout << "Bubble moved. New position (x, y) = ("<< position.get_x() << ", " << position.get_y() << ")"<< std::endl;
+
 }
