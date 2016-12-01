@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int get_number_of_char( char c, string w) {
+int get_number_of_char (char c, string w) {
   int res = 0;
   for (int i = 0; i < w.length(); i++) {
     if (w[i] == c) {
