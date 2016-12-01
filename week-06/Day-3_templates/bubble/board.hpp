@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include "bubble.h"
+#include "util.h"
 
 typedef unsigned int uint;
 typedef std::vector<std::string> _row;
@@ -32,10 +33,10 @@ class Board {
 };
 
 template<class T>
-uint Board<T>::game_map_rows = 10;
+uint Board<T>::game_map_rows = board_height;
 
 template<class T>
-uint Board<T>::game_map_columns = 10;
+uint Board<T>::game_map_columns = board_width;
 
 template<class T>
 Board<T>::Board() {

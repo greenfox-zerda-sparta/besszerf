@@ -2,6 +2,9 @@
 #include "bubble.h"
 using namespace std;
 
+int board_height = 10;
+int board_width = 10;
+
 int main() {
   //Bubble Game!!!!
   //Create a class template that has the values and methods to operate our bubble game!

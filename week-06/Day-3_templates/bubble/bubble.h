@@ -10,11 +10,16 @@
 #include <stdlib.h>     /* srand, rand */
 #include <iostream>
 #include "point2d.h"
+#include "util.h"
 
 class Bubble {
   private:
     Point2d position;
     Point2d speed_vector;
+    static int max_x_position;
+    static int min_x_position;
+    static int max_y_position;
+    static int min_y_position;
   public:
     Bubble();
     int move();
