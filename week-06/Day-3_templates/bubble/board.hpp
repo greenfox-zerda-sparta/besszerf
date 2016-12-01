@@ -34,11 +34,11 @@ class Board {
     static uint wall_hits;
     static uint collisions;
     map game_map;
-    std::vector<Bubble*> bubbles;
-    Bubble* bubble;
-    void put_bubble_on_board();
+    std::vector<T*> items;
+    T* item;
+    void print_item_on_board();
     void reset_board();
-    void move_bubble();
+    void move_item();
     bool is_a_wrong_position();
 
 };
@@ -58,23 +58,23 @@ uint Board<T>::wall_hits = 0;
 template<class T>
 Board<T>::Board() {
   game_map = map(game_map_rows, map_row(game_map_columns, "0"));
-  for (int i = 0; i < number_of_bubbles; i++) {
+  for (int i = 0; i < number_of_items; i++) {
     std::cout << i << ". ";
-    bubble = new Bubble();
+    item = new T();
     while (is_a_wrong_position()) {
-      delete bubble;
-      bubble = new Bubble();
+      delete item;
+      item = new T();
     }
-    put_bubble_on_board();
-    bubbles.push_back(bubble);
+    print_item_on_board();
+    items.push_back(item);
   }
-  bubble = NULL;
+  item = NULL;
 }
 
 template<class T>
 Board<T>::~Board() {
-  for (int i = 0; i < number_of_bubbles; i++) {
-    delete bubbles[i];
+  for (int i = 0; i < number_of_items; i++) {
+    delete items[i];
   }
 }
 
@@ -91,9 +91,9 @@ void Board<T>::print_board() {
 template<class T>
 void Board<T>::next_turn() {
     reset_board();
-    for (int i = 0; i < number_of_bubbles; i++) {
-      bubble = bubbles[i];
-      move_bubble();
+    for (int i = 0; i < number_of_items; i++) {
+      item = items[i];
+      move_item();
     }
     print_board();
 }
@@ -111,9 +111,9 @@ uint Board<T>::get_collisions() {
 
 
 template<class T>
-void Board<T>::put_bubble_on_board() {
-  int y = bubble->get_position().get_x();
-  int x = board_height -1 - bubble->get_position().get_y();
+void Board<T>::print_item_on_board() {
+  int y = item->get_position().get_x();
+  int x = board_height -1 - item->get_position().get_y();
   if (game_map[x][y] == "0") {
     game_map[x][y] = "1";
     return;
@@ -121,9 +121,9 @@ void Board<T>::put_bubble_on_board() {
     collisions++;
     std::cout << "New collision!" << std::endl;
   }
-  int num_of_bubbles_on_same_place = atoi(game_map[x][y].c_str()) + 1;
+  int num_of_items_on_same_place = atoi(game_map[x][y].c_str()) + 1;
   std::stringstream to_string;
-  to_string << num_of_bubbles_on_same_place;
+  to_string << num_of_items_on_same_place;
   game_map[x][y] = to_string.str();
 }
 
@@ -134,15 +134,15 @@ void Board<T>::reset_board() {
 
 
 template<class T>
-void Board<T>::move_bubble() {
-  wall_hits += bubble->move();
-  put_bubble_on_board();
+void Board<T>::move_item() {
+  wall_hits += item->move();
+  print_item_on_board();
 }
 
 template<class T>
 bool Board<T>::is_a_wrong_position() {
-  for (uint i = 0; i < bubbles.size(); i++) {
-    if (bubbles[i]->get_position() == bubble->get_position() ) {
+  for (uint i = 0; i < items.size(); i++) {
+    if (items[i]->get_position() == item->get_position() ) {
       return true;
     }
   }
