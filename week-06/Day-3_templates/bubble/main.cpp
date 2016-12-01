@@ -1,5 +1,5 @@
-//#include <stdlib.h>     /* srand, rand */
 #include "board.hpp"
+#include "bubble.h"
 using namespace std;
 
 int main() {
@@ -16,5 +16,6 @@ int main() {
 
   Board<int> bubble_board;
   bubble_board.print_board();
+  Bubble bubble;
   return 0;
 }
