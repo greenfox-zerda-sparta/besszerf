@@ -6,8 +6,6 @@
  */
 #include "bubble.h"
 
-int move_units_max = 3;
-
 int Bubble::max_x_position = board_width - 1;
 int Bubble::min_x_position = 0;
 int Bubble::max_y_position = board_height - 1;
@@ -17,8 +15,8 @@ Bubble::Bubble() {
   position.set_x(rand() %board_width);
   position.set_y(rand() %board_height);
   std::cout << "Random Position of bubble (x, y) = ("<< position.get_x() + 1 << ", " << position.get_y() + 1 << ")"<< std::endl;
-  speed_vector.set_x(rand() %move_units_max);
-  speed_vector.set_y(rand() %move_units_max);
+  speed_vector.set_x(rand() %(move_units_max + 1));
+  speed_vector.set_y(rand() %(move_units_max + 1));
   std::cout << "   Speed vector (x, y) = ("<< speed_vector.get_x() << ", " << speed_vector.get_y() << ")"<< std::endl;
 }
 

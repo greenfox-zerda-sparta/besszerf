@@ -11,5 +11,6 @@
 extern int board_width;
 extern int board_height;
 extern int move_units_max;
+extern int number_of_bubbles;
 
 #endif /* UTIL_H_ */

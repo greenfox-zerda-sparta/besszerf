@@ -5,6 +5,8 @@ using namespace std;
 
 int board_height = 10;
 int board_width = 10;
+int number_of_bubbles = 10;
+int move_units_max = 3;
 
 int main() {
   //Bubble Game!!!!
@@ -19,9 +21,9 @@ int main() {
   //After 10 rounds print how many times did the balls collide, and how many times did they hit the wall
 
   Board<int> bubble_board;
-  for (int i = 0; i < 5; i++) {
-    bubble_board.move_bubble();
-    bubble_board.print_board();
+  bubble_board.print_board();
+  for (int i = 0; i < 2; i++) {
+    bubble_board.next_turn();
   }
   cout << bubble_board.get_wall_hits() << endl;
   return 0;
