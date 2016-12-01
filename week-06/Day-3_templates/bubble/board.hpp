@@ -21,6 +21,7 @@ class Board {
     _board game_map;
     static uint game_map_columns;
     static uint game_map_rows;
+    static uint wall_hits;
   public:
     Board();
     void print_board();
@@ -47,5 +48,9 @@ void Board<T>::print_board() {
     std::cout << std::endl;
   }
 }
+
+template<class T>
+uint Board<T>::wall_hits = 0;
+
 
 #endif /* BOARD_HPP_ */
