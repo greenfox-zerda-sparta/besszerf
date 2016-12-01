@@ -25,6 +25,8 @@ class Board {
     static uint game_map_columns;
     static uint game_map_rows;
     static uint wall_hits;
+    void reset_board();
+    void put_bubble_on_board();
   public:
     Board();
     void print_board();
@@ -42,8 +44,9 @@ uint Board<T>::game_map_columns = board_width;
 
 template<class T>
 Board<T>::Board() {
-    game_map = _board(game_map_rows, _row(game_map_columns, "0"));
-    bubble = new Bubble();
+  game_map = _board(game_map_rows, _row(game_map_columns, "0"));
+  bubble = new Bubble();
+  put_bubble_on_board();
 }
 
 template<class T>
@@ -61,7 +64,9 @@ uint Board<T>::wall_hits = 0;
 
 template<class T>
 void Board<T>::move_bubble() {
+  reset_board();
   wall_hits += bubble->move();
+  put_bubble_on_board();
 }
 
 template<class T>
@@ -72,6 +77,18 @@ uint Board<T>::get_wall_hits() {
 template<class T>
 Bubble Board<T>::get_bubble() {
   return *bubble;
+}
+
+template<class T>
+void Board<T>::reset_board() {
+  game_map = _board(game_map_rows, _row(game_map_columns, "0"));
+}
+
+template<class T>
+void Board<T>::put_bubble_on_board() {
+  int y = bubble->get_position().get_x();
+  int x = board_height -1 - bubble->get_position().get_y();
+  game_map[x][y] = "*";
 }
 
 #endif /* BOARD_HPP_ */

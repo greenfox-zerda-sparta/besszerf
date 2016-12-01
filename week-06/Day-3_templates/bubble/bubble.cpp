@@ -16,7 +16,7 @@ int Bubble::min_y_position = 0;
 Bubble::Bubble() {
   position.set_x(rand() %board_width);
   position.set_y(rand() %board_height);
-  std::cout << "Random Position of bubble (x, y) = ("<< position.get_x() << ", " << position.get_y() << ")"<< std::endl;
+  std::cout << "Random Position of bubble (x, y) = ("<< position.get_x() + 1 << ", " << position.get_y() + 1 << ")"<< std::endl;
   speed_vector.set_x(rand() %move_units_max);
   speed_vector.set_y(rand() %move_units_max);
   std::cout << "   Speed vector (x, y) = ("<< speed_vector.get_x() << ", " << speed_vector.get_y() << ")"<< std::endl;
@@ -28,7 +28,7 @@ int Bubble::move() {
   int wall_hits_count = 0;
   calculate_position(temp_pos, wall_hits_count);
   position = *temp_pos;
-  std::cout << "Bubble moved. New position (x, y) = ("<< position.get_x() << ", " << position.get_y() << ")"<< std::endl;
+  std::cout << "Bubble moved. New position (x, y) = ("<< position.get_x() + 1 << ", " << position.get_y() + 1 << ")"<< std::endl;
   return wall_hits_count;
 }
 
@@ -65,6 +65,7 @@ int Bubble::get_wall_hits(Point2d* temp_pos) {
   if (hits_the_wall > 0) {
     temp_pos->set_x(new_x_pos);
     temp_pos->set_y(new_y_pos);
+    std::cout << "Bubble hits the wall!\n";
   }
   return hits_the_wall;
 }
