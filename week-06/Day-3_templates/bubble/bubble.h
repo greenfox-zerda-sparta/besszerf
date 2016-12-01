@@ -13,6 +13,10 @@
 #include "util.h"
 
 class Bubble {
+  public:
+    Bubble();
+    int move();
+    Point2d get_position();
   private:
     Point2d position;
     Point2d speed_vector;
@@ -20,16 +24,16 @@ class Bubble {
     static int min_x_position;
     static int max_y_position;
     static int min_y_position;
-    void calculate_position(Point2d* temp_pos, int &wall_hits_in_turn);
+    void fetch_next_position(Point2d* temp_pos, int &wall_hits_in_turn);
+    void check_wall_hits(Point2d* temp_pos, int &wall_hits_in_turn);
+    void check_right_wall(int &x, int &wall_hits_in_turn);
+    void check_left_wall(int &x, int &wall_hits_in_turn);
+    void check_top_wall(int &y, int &wall_hits_in_turn);
+    void check_bottom_wall(int &y, int &wall_hits_in_turn);
+    void modify_position_after_wallhit(Point2d* temp_pos, int &new_x, int &new_y);
+    void change_speed_x_direction_after_wallhit();
+    void change_speed_y_direction_after_wallhit();
     int get_wall_hits(Point2d* temp_pos);
-    void change_speed_x_direction();
-    void change_speed_y_direction();
-  public:
-    Bubble();
-    int move();
-    Point2d get_position();
-    Point2d get_speed_vector();
-    void set_position(int x, int y);
 };
 
 #endif /* BUBBLE_H_ */

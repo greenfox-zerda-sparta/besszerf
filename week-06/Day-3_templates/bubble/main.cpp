@@ -27,7 +27,7 @@ int main() {
     bubble_board.next_turn();
   }
   cout << "During " << num_of_turns << " turns:" << endl;
-      cout << "   Bubbles hit the wall: " << bubble_board.get_wall_hits() << " times."<< endl;
+  cout << "   Bubbles hit the wall: " << bubble_board.get_wall_hits() << " times."<< endl;
   cout << "   Collisions: " << bubble_board.get_collisions() << endl;
   return 0;
 }
