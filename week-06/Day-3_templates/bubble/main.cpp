@@ -1,13 +1,6 @@
-#include <iostream>
-#include "board.hpp"
+#include "application.hpp"
 #include "bubble.h"
 using namespace std;
-
-int board_height = 10;
-int board_width = 10;
-int number_of_items = 10;
-int move_units_max = 3;
-int num_of_turns = 10;
 
 int main() {
   //Bubble Game!!!!
@@ -21,13 +14,6 @@ int main() {
   //In each round the bubble move from their spot to the next spot pointed with its direction vector
   //After 10 rounds print how many times did the balls collide, and how many times did they hit the wall
   srand(time(NULL));
-  Board<Bubble> bubble_board;
-  bubble_board.print_board();
-  for (int i = 0; i < num_of_turns; i++) {
-    bubble_board.next_turn();
-  }
-  cout << "During " << num_of_turns << " turns:" << endl;
-  cout << "   Bubbles hit the wall: " << bubble_board.get_wall_hits() << " times."<< endl;
-  cout << "   Collisions: " << bubble_board.get_collisions() << endl;
-  return 0;
+  Application<Bubble, Board> my_app;
+  return my_app.run();
 }
