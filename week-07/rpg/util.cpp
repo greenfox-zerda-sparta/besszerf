@@ -1,7 +1,7 @@
 #include "util.h"
 
 int board_rows = 9;
-int board_cols = 18;
+int board_cols = 9;
 int tile_width = 72;
 int tile_height = 72;
 int screen_width = board_cols * tile_width;

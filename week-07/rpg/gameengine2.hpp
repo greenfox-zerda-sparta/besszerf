@@ -23,7 +23,7 @@ private:
 public:
   GameContext(unsigned int screen_width, unsigned int screen_height) {
     SDL_Init(SDL_INIT_VIDEO);
-    screen = SDL_CreateWindow("Killer Hero Game",
+    screen = SDL_CreateWindow("Killer Hero Game Window",
                               SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED,
                               screen_width, screen_height,
