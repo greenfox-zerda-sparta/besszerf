@@ -7,7 +7,7 @@
 typedef std::vector<bool> row;
 typedef std::vector<row> board;
 
-const int COVERABLE = 54;
+const int COVERABLE = int (0.54 * board_rows * board_cols);
 
 class MyGame : public Game {
   public:
@@ -18,6 +18,7 @@ class MyGame : public Game {
   private:
     board myBoard;
     void drawLevel(int x, int y, int covered);
+    void print_board();
 };
 
 #endif /* MYGAME_H_ */
