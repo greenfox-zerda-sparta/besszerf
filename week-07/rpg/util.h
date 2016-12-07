@@ -12,5 +12,5 @@ extern int tile_height;
 
 std::string to_string(int integer);
 
-
+extern const int STEPS[15];
 #endif /* UTIL_H_ */

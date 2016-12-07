@@ -13,3 +13,5 @@ std::string to_string(int integer) {
   return x.str();
 }
 
+const int STEPS[15] = {3,3,4,5,4,4,4,5,5,5,5,5,6,6,6};
+

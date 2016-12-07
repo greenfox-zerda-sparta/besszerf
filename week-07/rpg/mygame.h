@@ -4,17 +4,20 @@
 #include "util.h"
 #include <vector>
 
-typedef std::vector<int> row;
+typedef std::vector<bool> row;
 typedef std::vector<row> board;
+
+const int COVERABLE = 54;
 
 class MyGame : public Game {
   public:
     MyGame();
     ~MyGame();
-    virtual void init(GameContext& context);
-    virtual void render(GameContext& context);
+    void init(GameContext& context);
+    void render(GameContext& context);
   private:
     board myBoard;
+    void drawLevel(int x, int y, int covered);
 };
 
 #endif /* MYGAME_H_ */
