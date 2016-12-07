@@ -32,10 +32,4 @@ class Song {
     virtual ~Song();
 };
 
-class RockSong : public Song {
-  private:
-    int genre;
-  public:
-
-};
 #endif /* SONG_H_ */

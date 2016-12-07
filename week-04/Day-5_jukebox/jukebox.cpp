@@ -71,7 +71,7 @@ std::string Jukebox::get_top_rated_title() {
     }
     return top_rated->get_title();
   } else {
-    return "There are not songs!";
+    return "There are no songs!";
   }
 }
 
@@ -86,6 +86,6 @@ std::string Jukebox::get_top_rated_genre() {
     }
     return in_words[top_rated];
   } else {
-    return "There are not songs!";
+    return "There are no songs!";
   }
 }
