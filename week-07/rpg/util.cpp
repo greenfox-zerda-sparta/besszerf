@@ -14,4 +14,5 @@ std::string to_string(int integer) {
 }
 
 const int STEPS[15] = {3,3,3,4,4,4,4,5,5,5,5,5,5,6,6};
+const int FILL_WITH_FLOOR = int (0.62 * board_rows * board_cols);
 

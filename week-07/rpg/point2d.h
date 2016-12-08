@@ -5,6 +5,7 @@ class Point2d {
     int x;
     int y;
   public:
+    Point2d();
     bool operator == (const Point2d&);
     void set_x(int x);
     void set_y(int y);

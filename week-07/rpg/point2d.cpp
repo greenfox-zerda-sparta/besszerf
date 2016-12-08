@@ -1,4 +1,10 @@
 #include "point2d.h"
+
+Point2d::Point2d() {
+  x = 0;
+  y = 0;
+}
+
 void Point2d::set_x(int x) {
   this->x = x;
 }
