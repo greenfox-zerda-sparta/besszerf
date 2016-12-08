@@ -16,13 +16,12 @@ class Killers {
     Point2d get_position();
     std::string get_image();
   protected:
-    board gameBoard;
+    static board gameBoard;
     Point2d position;
     std::string image;
-    std::vector<Point2d> killers_positions;
+    static std::vector<Point2d> killers_positions;
     void generate_random_position();
     bool is_a_good_position(Point2d &_position);
-    void set_board(board myBoard);
 };
 
 #endif /* KILLERS_H_ */

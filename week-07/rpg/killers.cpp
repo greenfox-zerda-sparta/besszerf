@@ -1,11 +1,14 @@
 #include "killers.h"
 
+std::vector<Point2d> Killers::killers_positions;
+board Killers::gameBoard;
+
 Killers::Killers(const board &myBoard) {
-  set_board(myBoard);
+  gameBoard = myBoard;
 }
 
 Killers::Killers(const board &myBoard, const std::vector<Point2d> &killers_positions) {
-  set_board(myBoard);
+  gameBoard = myBoard;
   this->killers_positions = killers_positions;
   generate_random_position();
 }
@@ -20,12 +23,7 @@ std::string Killers::get_image() {
   return image;
 }
 
-void Killers::set_board(board myBoard) {
-  gameBoard = myBoard;
-}
-
 void Killers::move(GameContext& context) {}
-
 
 void Killers::draw(GameContext& context) {
   context.draw_sprite(image, position.get_x(), position.get_y());
@@ -53,5 +51,4 @@ bool Killers::is_a_good_position(Point2d &_position) {
   }
   return true;
 }
-
 

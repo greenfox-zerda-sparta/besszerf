@@ -1,8 +1,4 @@
-#include <iostream>
-#include <stdlib.h>
 #include "mygame.h"
-#include "gameengine2.hpp"
-#include "randomboard.h"
 using namespace std;
 
 int main(int argc, char* argv[]) {

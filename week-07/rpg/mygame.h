@@ -1,12 +1,9 @@
 #ifndef MYGAME_H_
 #define MYGAME_H_
-#include "gameengine2.hpp"
-#include "point2d.h"
 #include "randomboard.h"
 #include "hero.h"
 #include "boss.h"
 #include "skeleton.h"
-#include "util.h"
 #include <vector>
 
 class MyGame : public Game {
