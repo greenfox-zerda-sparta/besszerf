@@ -13,11 +13,10 @@ typedef std::vector<row> board;
 class RandomBoard {
   public:
     RandomBoard();
-    board gameBoard;
-    void print_board();
     void draw(GameContext& context);
-    board get_board();
+    const board get_board() const;
   private:
+    board gameBoard;
     Point2d position;
     int filled_level;
     int direction;

@@ -5,7 +5,7 @@
 class Boss : public Killers {
   public:
     Boss();
-    Boss(const board &myBoard, const std::vector<Point2d> &killers_positions);
+    Boss(const RandomBoard &myBoard, const std::vector<Killers*> &killers_positions);
   private:
 };
 

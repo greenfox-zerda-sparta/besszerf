@@ -4,7 +4,7 @@ Skeleton::Skeleton() {
   image = "pics/skeleton.bmp";
 }
 
-Skeleton::Skeleton(const board &myBoard, const std::vector<Point2d> &killers_positions) : Killers (myBoard, killers_positions){
+Skeleton::Skeleton(const RandomBoard &myBoard, const std::vector<Killers*> &killers) : Killers (myBoard, killers){
   image = "pics/skeleton.bmp";
 }
 

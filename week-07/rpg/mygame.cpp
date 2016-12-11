@@ -25,16 +25,7 @@ void MyGame::render(GameContext& context) {
 }
 
 MyGame::MyGame() {
-  gameBoard = RandomBoard();
-  faces.push_back(new Hero(gameBoard.get_board()));
-  std::vector<Point2d> positions;
-  positions.push_back(faces[0]->get_position());
-  faces.push_back(new Boss(gameBoard.get_board(), positions));
-  positions.push_back(faces[1]->get_position());
-  for (int i = 0; i < num_of_sceletons; i++) {
-    faces.push_back(new Skeleton(gameBoard.get_board(), positions));
-    positions.push_back(faces[i + 2]->get_position());
-  }
+  init_killers();
 }
 
 MyGame::~MyGame() {
@@ -43,7 +34,10 @@ MyGame::~MyGame() {
   }
 }
 
-std::vector<Killers*> MyGame::get_faces() {
-  return faces;
+void MyGame::init_killers() {
+  faces.push_back(new Hero(gameBoard));
+  faces.push_back(new Boss(gameBoard, faces));
+  for (int i = 0; i < num_of_sceletons; i++) {
+    faces.push_back(new Skeleton(gameBoard, faces));
+  }
 }
-

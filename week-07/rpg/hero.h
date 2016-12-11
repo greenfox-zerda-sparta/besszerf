@@ -5,7 +5,7 @@
 class Hero : public Killers {
   public:
     Hero();
-    Hero(const board &myBoard);
+    Hero(const RandomBoard &myBoard);
     void move(GameContext& context);
   private:
     void set_initial_position();

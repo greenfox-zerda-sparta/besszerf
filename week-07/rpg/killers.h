@@ -8,20 +8,17 @@
 class Killers {
   public:
     Killers();
-    Killers(const board &myBoard);
-    Killers(const board &myBoard, const std::vector<Point2d> &killers_positions);
+    Killers(const RandomBoard &myBoard);
+    Killers(const RandomBoard &myBoard, const std::vector<Killers*> &killers);
+    virtual ~Killers() {};
     virtual void draw(GameContext& context);
     virtual void move(GameContext& context);
-    virtual ~Killers() {};
-    Point2d get_position();
-    std::string get_image();
   protected:
-    static board gameBoard;
+    static const RandomBoard* gameBoard;
     Point2d position;
     std::string image;
-    static std::vector<Point2d> killers_positions;
-    void generate_random_position();
-    bool is_a_good_position(Point2d &_position);
+    void generate_random_position( const std::vector<Killers*> &killers);
+    bool is_a_good_position(Point2d &_position,  const std::vector<Killers*> &killers);
 };
 
 #endif /* KILLERS_H_ */

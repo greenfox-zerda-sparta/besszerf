@@ -12,8 +12,8 @@ class MyGame : public Game {
     ~MyGame();
     void init(GameContext& context);
     void render(GameContext& context);
-    std::vector<Killers*> get_faces();
   private:
+    void init_killers();
     RandomBoard gameBoard;
     std::vector<Killers*> faces;
 };

@@ -5,7 +5,7 @@
 class Skeleton : public Killers {
   public:
     Skeleton();
-    Skeleton(const board &myBoard, const std::vector<Point2d> &killers_positions);
+    Skeleton(const RandomBoard &myBoard, const std::vector<Killers*> &killers);
   private:
 };
 
