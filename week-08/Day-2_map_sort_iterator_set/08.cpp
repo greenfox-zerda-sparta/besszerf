@@ -31,13 +31,27 @@ using namespace std;
 // How many characters does it have?
 
 void print_map(map<string, int>& names) {
+  cout << " Word                   Count" <<  endl << " ============================" <<  endl;
+  int chars_count = 0;
+  string longest ="";
   for(map<string, int>::iterator it = names.begin(); it != names.end(); ++it) {
-      cout << it->first << " -> " << it->second << endl;
+      cout << " " << it->first;
+      if (it->first.length() > longest.length()) {
+        longest = it->first;
+      }
+      int len = it->first.length();
+      chars_count += len * it->second;
+      for (int i = len; i < 30; ++i) {
+        cout << " ";
+      }
+      cout << it->second << endl;
   }
+  cout << endl << "Character count: " << chars_count <<endl;
+  cout << "Longest word (length): " << longest << " (" << longest.length() << ")" << endl;
 }
 
 void clean_word(string& word) {
-  int to_remove = 0;
+  unsigned int to_remove = 0;
   for(string::iterator i = word.begin(); i != word.end(); i++) {
     if (*i <65 || (*i > 90 && *i < 97) || *i > 122) {
       ++to_remove;
@@ -49,6 +63,7 @@ void clean_word(string& word) {
   }
   if (to_remove == word.length()) {
     word = "";
+    return;
   }
   for(string::reverse_iterator i = word.rbegin(); i != word.rend(); i++) {
     if (*i <65 || (*i > 90 && *i < 97) || *i > 122) {
@@ -58,9 +73,18 @@ void clean_word(string& word) {
       break;
     }
   }
+  for(string::iterator i = word.begin(); i != word.end(); i++) {
+    if (*i == 45 && *(i + 1) == 45) {
+      word = "";
+      return;
+    }
+  }
   transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
 
+void sort_map() {
+
+}
 int main() {
   ifstream ifs("alice.txt");
   string word;
@@ -69,13 +93,16 @@ int main() {
   while (ifs >> word) {
     ++wc;
     clean_word(word);
-    if ( alice_map.find(word) == alice_map.end() && word != "") {
+    if (word == "") {
+      continue;
+    }
+    if ( alice_map.find(word) == alice_map.end() ) {
       alice_map[word] = 1;
-    } else if (word != ""){
+    } else {
       ++alice_map[word];
     }
   }
   print_map(alice_map);
-  cout << wc << endl;
+  cout << "Word 'alice' occurs this number times: " << alice_map["alice"] << endl;
   return 0;
 }
