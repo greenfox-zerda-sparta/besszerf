@@ -20,6 +20,6 @@ string remove_x(string word) {
 
 int main() {
   // Given a string, compute recursively a new string where all the 'x' chars have been removed.
-  cout << remove_x("Valamix tudxoma'nyos?") << endl;
+  cout << remove_x("Valamix marxhaságx.") << endl;
   return 0;
 }
