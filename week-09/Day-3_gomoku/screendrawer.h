@@ -12,7 +12,7 @@ typedef std::pair<char, char> coordinate;
 
 class ScreenDrawer {
   public:
-    void draw_board(board& gameboard);
+    void draw_board(const board& gameboard);
 };
 
 

@@ -17,16 +17,15 @@ class Game {
     Game();
     ~Game();
     bool next_turn(coordinate);
-    void draw_board();
+//    board get_board();
     void reset();
     Player get_current_player();
-  private:
     board gameboard;
+  private:
     Player player1;
     Player player2;
     Player* current_player;
     WinnerLineChecker winner_checker;
-    ScreenDrawer screen_drawer;
     void set_next_player();
     bool is_not_engaged(coordinate&);
     void set_board(coordinate&);
