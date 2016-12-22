@@ -16,7 +16,7 @@ void UserInterface::run() {
   cout << "Simple Gomoku Game" << endl << endl;
   game->draw_board();
   while (true) {
-    cout << "Player " << game->get_current_player().player << endl;
+    cout << "Player " << game->get_current_player().number << endl;
     cout << "Choosen coordinates (x y): ";
     cin >> a >> b;
     x = (char)a;
@@ -29,7 +29,7 @@ void UserInterface::run() {
     if(!game->next_turn(act_coord)) {
       game->draw_board();
       char answer;
-      cout << "Player " << game->get_current_player().player << " wins." << endl;
+      cout << "Player " << game->get_current_player().number << " wins." << endl;
       cout << "One more game (y/n)? ";
       cin >> answer;
       if (answer != 'y') {

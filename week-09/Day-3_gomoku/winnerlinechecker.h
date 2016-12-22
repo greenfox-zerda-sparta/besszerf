@@ -5,7 +5,7 @@
 
 typedef std::pair<char, char> dir_vector;
 struct Player {
-    int player;
+    int number;
     int sign;
 
 };
