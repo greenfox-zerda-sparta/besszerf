@@ -98,9 +98,7 @@ void WinnerLineChecker::count_to_positive_direction(board& gameboard, coordinate
 }
 
 bool WinnerLineChecker::is_a_winner_sign_backwards(board& gameboard, coordinate& neg_coord_in_cycle) {
-  if (neg_coord_in_cycle.first + negative_vector.first > -1
-      && neg_coord_in_cycle.second + negative_vector.second > -1
-      && neg_coord_in_cycle.first + negative_vector.first < board_col_size) {
+  if (!is_a_wallhit_in_negative_direction(neg_coord_in_cycle)) {
     decrement_negative_coordinate_in_cycle(neg_coord_in_cycle);
     if (gameboard[neg_coord_in_cycle.first][neg_coord_in_cycle.second] == current_player->sign) {
       return true;
@@ -110,9 +108,7 @@ bool WinnerLineChecker::is_a_winner_sign_backwards(board& gameboard, coordinate&
 }
 
 bool WinnerLineChecker::is_a_winner_sign_towards(board& gameboard, coordinate& pos_coord_in_cycle) {
-  if (pos_coord_in_cycle.first + positive_vector.first < board_col_size
-      && pos_coord_in_cycle.second + positive_vector.second < board_col_size
-      && pos_coord_in_cycle.first + positive_vector.first > -1) {
+  if (!is_a_wallhit_in_positive_direction(pos_coord_in_cycle)) {
     increment_positive_coordinate_in_cycle(pos_coord_in_cycle);
     if (gameboard[pos_coord_in_cycle.first][pos_coord_in_cycle.second] == current_player->sign) {
       return true;
@@ -120,6 +116,25 @@ bool WinnerLineChecker::is_a_winner_sign_towards(board& gameboard, coordinate& p
   }
   return false;
 }
+
+bool WinnerLineChecker::is_a_wallhit_in_negative_direction(coordinate& neg_coord_in_cycle) {
+  if(neg_coord_in_cycle.first + negative_vector.first > -1
+      && neg_coord_in_cycle.second + negative_vector.second > -1
+      && neg_coord_in_cycle.first + negative_vector.first < board_col_size) {
+    return false;
+  }
+  return true;
+}
+    ;
+bool WinnerLineChecker::is_a_wallhit_in_positive_direction(coordinate& pos_coord_in_cycle) {
+  if(pos_coord_in_cycle.first + positive_vector.first < board_col_size
+      && pos_coord_in_cycle.second + positive_vector.second < board_col_size
+      && pos_coord_in_cycle.first + positive_vector.first > -1) {
+    return false;
+  }
+  return true;
+}
+
 
 void WinnerLineChecker::decrement_negative_coordinate_in_cycle(coordinate& neg_coord_in_cycle) {
   neg_coord_in_cycle.first += negative_vector.first;

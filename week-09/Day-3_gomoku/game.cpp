@@ -46,11 +46,7 @@ bool Game::has_current_player_won(coordinate& coord) {
 Player Game::get_current_player() {
   return *current_player;
 }
-/*
-board Game::get_board() {
-  return gameboard;
-}
-*/
+
 void Game::reset() {
   gameboard = board(board_col_size, row(board_row_size, board_sign));
   player1 = {1, p1_sign};

@@ -39,6 +39,8 @@ class WinnerLineChecker {
     bool is_a_winner_sign_backwards(board& gameboard, coordinate&);
     void decrement_negative_coordinate_in_cycle(coordinate&);
     void increment_positive_coordinate_in_cycle(coordinate&);
+    bool is_a_wallhit_in_negative_direction(coordinate&);
+    bool is_a_wallhit_in_positive_direction(coordinate&);
 
 };
 #endif /* WINNERLINECHECKER_H_ */

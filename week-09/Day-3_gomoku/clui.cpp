@@ -12,7 +12,7 @@ void CLUserInterface::run() {
   char y;
   coordinate act_coord;
   cout << "Simple Gomoku Game" << endl << endl;
-  screen_drawer.draw_board(game->gameboard);
+  draw_board();
   while (true) {
     cout << "Player " << game->get_current_player().number << endl;
     cout << "Choosen coordinates (x y): ";
@@ -25,7 +25,7 @@ void CLUserInterface::run() {
     }
     act_coord = {x-1, y-1};
     if(!game->next_turn(act_coord)) {
-      screen_drawer.draw_board(game->gameboard);
+      draw_board();
       char answer;
       cout << "Player " << game->get_current_player().number << " wins." << endl;
       cout << "One more game (y/n)? ";
@@ -37,6 +37,17 @@ void CLUserInterface::run() {
         game->reset();
       }
     }
-    screen_drawer.draw_board(game->gameboard);
+    draw_board();
   }
 }
+
+void CLUserInterface::draw_board() {
+  for (unsigned int i = 0; i < game->gameboard.size(); ++i) {
+    for (unsigned int j = 0; j < game->gameboard[i].size(); ++j) {
+      std::cout << (int)game->gameboard[j][game->gameboard[i].size() -1 -i] << " ";
+    }
+    std::cout << std::endl;
+  }
+  std::cout << std::endl;
+}
+

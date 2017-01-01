@@ -9,6 +9,7 @@ class CLUserInterface : public UserInterface{
     CLUserInterface(Game& game);
     void run();
   private:
+    void draw_board();
 
 };
 #endif /* CLUI_H_ */

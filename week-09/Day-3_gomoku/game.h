@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "winnerlinechecker.h"
-#include "screendrawer.h"
 #include <iostream>
 
 using namespace std;
@@ -17,7 +16,6 @@ class Game {
     Game();
     ~Game();
     bool next_turn(coordinate);
-//    board get_board();
     void reset();
     Player get_current_player();
     board gameboard;

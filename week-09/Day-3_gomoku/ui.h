@@ -12,7 +12,6 @@ class UserInterface {
     virtual ~UserInterface();
   protected:
     Game* game;
-    ScreenDrawer screen_drawer;
 
 };
 
