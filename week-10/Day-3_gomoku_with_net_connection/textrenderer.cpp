@@ -7,7 +7,8 @@ TextRenderer::TextRenderer(SDL_Renderer* renderer) {
   text_width = 0;
   text_height = 0;
   TTF_Init();
-  gFont = TTF_OpenFont( "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf", 32 );
+  font_size = 32;
+  gFont = TTF_OpenFont( "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf", font_size);
 }
 
 void TextRenderer::free_text_surface() {
@@ -18,6 +19,16 @@ void TextRenderer::free_text_surface() {
     text_width = 0;
     text_height = 0;
   }
+}
+
+void TextRenderer::set_font_size(int new_size) {
+  font_size = new_size;
+  gFont = TTF_OpenFont( "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf", font_size);
+}
+
+void TextRenderer::reset_font_size() {
+  font_size = 32;
+  gFont = TTF_OpenFont( "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf", font_size);
 }
 
 void TextRenderer::loadFromRenderedText( std::string textureText, SDL_Color textColor ) {

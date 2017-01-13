@@ -17,5 +17,4 @@ extern unsigned int screen_height;
 extern unsigned int left_vp_width;
 extern unsigned int right_vp_width;
 
-
 #endif /* SETTINGS_H_ */

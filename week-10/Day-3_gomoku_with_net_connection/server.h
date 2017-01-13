@@ -12,21 +12,15 @@ struct to_send {
 class my_server {
   public:
     my_server();
-    void run();
-    void stop();
-    void send();
-    void set_message(std::string);
+    ~my_server();
+    bool is_online();
+    void send_message(std::string);
+    void set_port(char*);
   private:
+    unsigned int port;
     TCPsocket server;
     TCPsocket client;
     IPaddress ip;
-    bool is_send;
-    bool listening;
-    to_send text_struct;
-    bool is_online;
 };
-
-
-
 
 #endif /* SERVER_H_ */

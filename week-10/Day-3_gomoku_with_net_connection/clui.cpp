@@ -1,7 +1,7 @@
 #include "clui.h"
 
-CLUserInterface::CLUserInterface(Game& game) {
-  this->game = &game;
+CLUserInterface::CLUserInterface(data_share& data) {
+  this->data = &data;
 }
 
 void CLUserInterface::run() {
@@ -14,7 +14,7 @@ void CLUserInterface::run() {
   cout << "Simple Gomoku Game" << endl << endl;
   draw_board();
   while (true) {
-    cout << "Player " << game->get_current_player().number << endl;
+    cout << "Player " << data->game->get_current_player().number << endl;
     cout << "Choosen coordinates (x y): ";
     cin >> a >> b;
     x = (char)a;
@@ -24,17 +24,17 @@ void CLUserInterface::run() {
       return;
     }
     act_coord = {x-1, y-1};
-    if(!game->next_turn(act_coord)) {
+    if(!data->game->next_turn(act_coord)) {
       draw_board();
       char answer;
-      cout << "Player " << game->get_current_player().number << " wins." << endl;
+      cout << "Player " << data->game->get_current_player().number << " wins." << endl;
       cout << "One more game (y/n)? ";
       cin >> answer;
       if (answer != 'y') {
         cout << "Bye!" << endl;
         return;
       } else {
-        game->reset();
+        data->game->reset();
       }
     }
     draw_board();
@@ -42,9 +42,9 @@ void CLUserInterface::run() {
 }
 
 void CLUserInterface::draw_board() {
-  for (unsigned int i = 0; i < game->gameboard.size(); ++i) {
-    for (unsigned int j = 0; j < game->gameboard[i].size(); ++j) {
-      std::cout << (int)game->gameboard[j][game->gameboard[i].size() -1 -i] << " ";
+  for (unsigned int i = 0; i < data->game->gameboard.size(); ++i) {
+    for (unsigned int j = 0; j < data->game->gameboard[i].size(); ++j) {
+      std::cout << (int)data->game->gameboard[j][data->game->gameboard[i].size() -1 -i] << " ";
     }
     std::cout << std::endl;
   }

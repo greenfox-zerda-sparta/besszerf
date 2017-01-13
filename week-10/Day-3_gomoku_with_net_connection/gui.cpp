@@ -1,7 +1,6 @@
 #include "gui.h"
 
-GUserInterface::GUserInterface(Game& game) {
-  this->game = &game;
+GUserInterface::GUserInterface() {
   SDL_Init(SDL_INIT_VIDEO);
   window = SDL_CreateWindow(window_title,
     SDL_WINDOWPOS_UNDEFINED,
@@ -10,6 +9,7 @@ GUserInterface::GUserInterface(Game& game) {
   renderer = SDL_CreateRenderer(window, -1, 0);
 
   player1_pic = "pics/player1_32.bmp";
+  pure_window_pic = "pics/panel.bmp";
   player2_pic = "pics/player2_32.bmp";
   board_pic = "pics/board_32.bmp";
   game_over_pic = "pics/gameover2.bmp";
@@ -17,6 +17,7 @@ GUserInterface::GUserInterface(Game& game) {
   winner2_pic = "pics/player2_2.bmp";
   game_over = false;
   quit = false;
+  shared_data = NULL;
 }
 
 GUserInterface::~GUserInterface() {
@@ -25,12 +26,12 @@ GUserInterface::~GUserInterface() {
   SDL_Quit();
 }
 
-void GUserInterface::init() {
+void GUserInterface::init(data_share& data_pack) {
+  this->shared_data = &data_pack;
   init_right_viewport();
   SDL_RenderSetViewport( renderer, &rightViewport );
   SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
   SDL_RenderClear(renderer);
-  //SDL_RenderCopy( gRenderer, gTexture, NULL, NULL );
   init_left_viewport();
   SDL_RenderSetViewport( renderer, &leftViewport );
   load_file(player1_pic);
@@ -39,24 +40,51 @@ void GUserInterface::init() {
   load_file(winner1_pic);
   load_file(winner2_pic);
   load_file(game_over_pic);
+  load_file(pure_window_pic);
   draw_right_vp();
-  draw_board(game->gameboard);
+  draw_board((this->shared_data->game)->gameboard);
+  draw_connecting_window();
+}
+
+void GUserInterface::draw_player_sprite() {
+  char _tile_width = tile_width;
+  char _tile_height = tile_height;
+  tile_width = 60;
+  tile_height = 60;
+  std::string player_pic;
+  SDL_RenderSetViewport( renderer, &rightViewport );
+  if(shared_data->player == 1) {
+    player_pic = winner1_pic;
+    draw_sprite(player_pic, 70, 250);
+  }
+  if(shared_data->player == 2) {
+    player_pic = winner2_pic;
+    draw_sprite(player_pic, 70, 250);
+  }
+  tile_width = _tile_width;
+  tile_height = _tile_height;
 }
 
 void GUserInterface::draw_right_vp() {
   char _tile_width = tile_width;
   char _tile_height = tile_height;
   TextRenderer my_text(renderer);
-  std::string text = "Player";
+  std::string text = "Current:";
   my_text.load_text(text);
-  std::string player_pic = game->get_current_player().number == 1? winner1_pic: winner2_pic;
+  std::string player_pic = shared_data->game->get_current_player().number == 1? winner1_pic: winner2_pic;
   tile_width = 60;
   tile_height = 60;
   SDL_RenderSetViewport( renderer, &rightViewport );
   SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
   SDL_RenderClear(renderer);
   my_text.render_text(40, 40);
-  draw_sprite(player_pic, 70, 110);
+  draw_sprite(player_pic, 70, 90);
+
+  text = "You:";
+  my_text.load_text(text);
+  my_text.render_text(40, 200);
+  draw_player_sprite();
+
   SDL_RenderSetViewport( renderer, &leftViewport );
   tile_width = _tile_width;
   tile_height = _tile_height;
@@ -96,71 +124,57 @@ void GUserInterface::draw_sprite(std::string name, int x, int y) {
 }
 
 void GUserInterface::on_mouse_click(unsigned int x, unsigned int y) {
-  if (game_over) {
-    if (is_new_game_pushed(x, y)) {
-      game_over = false;
-      draw_right_vp();
-      draw_board(game->gameboard);
-    } else if (is_quit_pushed(x, y)) {
-      quit = true;
-    }
-    return;
-  }
-  x /= tile_width;
-  y /= tile_height;
-  if(!game->next_turn(coordinate(x,y))) {
-    run_game_over_routine();
-  } else {
-    draw_right_vp();
-    draw_board(game->gameboard);
-  }
-}
-
-bool GUserInterface::is_new_game_pushed(unsigned int x, unsigned int y) {
-  if (x < game_over_win.pos_x + game_over_win.new_game_button.x + game_over_win.new_game_button.width &&
-      x > game_over_win.pos_x + game_over_win.new_game_button.x &&
-      y < game_over_win.pos_y + game_over_win.new_game_button.y + game_over_win.new_game_button.height &&
-      y > game_over_win.pos_y + game_over_win.new_game_button.y) {
-    return true;
-  }
-  return false;
-}
-
-bool GUserInterface::is_quit_pushed(unsigned int x, unsigned int y) {
-  if (x < game_over_win.pos_x + game_over_win.quit_button.x + game_over_win.quit_button.width &&
-      x > game_over_win.pos_x + game_over_win.quit_button.x &&
-      y < game_over_win.pos_y + game_over_win.quit_button.y + game_over_win.quit_button.height &&
-      y > game_over_win.pos_y + game_over_win.quit_button.y) {
-    return true;
-  }
-  return false;
+  shared_data->x = x;
+  shared_data->y = y;
 }
 
 void GUserInterface::run_game_over_routine() {
-  game_over = true;
+  shared_data->game_over = true;
   draw_right_vp();
-  draw_board(game->gameboard);
-  draw_game_over_texture(); ///
-  game->reset();
+  draw_board(shared_data->game->gameboard);
+  draw_game_over_window(); ///
+  shared_data->game->reset();
 
 }
 
-void GUserInterface::draw_game_over_texture() {
+void GUserInterface::put_panel_out(std::string pic) {
   char _tile_width = tile_width;
   char _tile_height = tile_height;
-  tile_width = game_over_win.width;
-  tile_height = game_over_win.height;
-  game_over_win.pos_x = left_vp_width/2-game_over_win.width/2;
-  game_over_win.pos_y = screen_height/2-game_over_win.height/2;
-  draw_sprite(game_over_pic, game_over_win.pos_x, game_over_win.pos_y);
+  tile_width = panel.width;
+  tile_height = panel.height;
+  panel.pos_x = left_vp_width/2-panel.width/2;
+  panel.pos_y = screen_height/2-panel.height/2;
+  draw_sprite(pic, panel.pos_x, panel.pos_y);
+  tile_width = _tile_width;
+  tile_height = _tile_height;
+}
+
+void GUserInterface::draw_game_over_window() {
+  char _tile_width = tile_width;
+  char _tile_height = tile_height;
+  put_panel_out(game_over_pic);
   TextRenderer my_text(renderer);
-  std::string winner_pic = game->get_current_player().number == 1? winner1_pic: winner2_pic;
+  std::string winner_pic = shared_data->game->get_current_player().number == 1? winner1_pic: winner2_pic;
   std::string text = "wins.";
   my_text.load_text(text);
-  my_text.render_text(((int)game_over_win.pos_x + 140), (int)game_over_win.pos_y + 40);
+  my_text.render_text(((int)panel.pos_x + 140), (int)panel.pos_y + 40);
   tile_width = 60;
   tile_height = 60;
-  draw_sprite(winner_pic, game_over_win.pos_x + 60, game_over_win.pos_y + 20);
+  draw_sprite(winner_pic, panel.pos_x + 60, panel.pos_y + 20);
+  tile_width = _tile_width;
+  tile_height = _tile_height;
+}
+
+void GUserInterface::draw_connecting_window() {
+  char _tile_width = tile_width;
+  char _tile_height = tile_height;
+  put_panel_out(pure_window_pic);
+  TextRenderer my_text(renderer);
+  my_text.set_font_size(15);
+  std::string text = "Connecting to remote player...";
+  my_text.load_text(text);
+  my_text.render_text(((int)panel.pos_x + 12), (int)panel.pos_y + 60);
+  my_text.reset_font_size();
   tile_width = _tile_width;
   tile_height = _tile_height;
 }
@@ -179,30 +193,28 @@ void GUserInterface::draw_board(board& gameboard) {
       }
     }
   }
-
 }
 
 void GUserInterface::run() {
-  init();
-  SDL_Event event;
-  while (!quit) {
-    SDL_WaitEvent(&event);
-    switch (event.type) {
-    case SDL_QUIT:
-      quit = true;
+  render();
+  SDL_WaitEvent(&event);
+  switch (event.type) {
+  case SDL_QUIT:
+    shared_data->quit = true;
+    break;
+  case SDL_KEYDOWN:
+    switch (event.key.keysym.sym) {
+    case SDLK_ESCAPE:
+      shared_data->quit = true;
       break;
-    case SDL_KEYDOWN:
-      switch (event.key.keysym.sym) {
-      case SDLK_ESCAPE:
-        quit = true;
-        break;
-      }
-      break;
-    case SDL_MOUSEBUTTONUP:
-      int x, y;
-      SDL_GetMouseState( &x, &y );
-      on_mouse_click(x, y);
     }
-    render();
+    break;
+  case SDL_MOUSEBUTTONDOWN:
+    on_mouse_click(event.button.x, event.button.y);
   }
+}
+
+void GUserInterface::remove_mouse_events() {
+  SDL_PumpEvents();
+  SDL_FlushEvent(SDL_MOUSEBUTTONDOWN);
 }

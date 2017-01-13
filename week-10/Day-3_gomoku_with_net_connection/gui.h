@@ -20,7 +20,7 @@ struct button2 {
     unsigned int width = 100;
     unsigned int height = 25;
 };
-struct game_over_window {
+struct comm_window {
     std::string value = "Game over!";
     unsigned int width = 300;
     unsigned int height = 150;
@@ -32,37 +32,41 @@ struct game_over_window {
 
 class GUserInterface : public UserInterface {
   public:
-    void run();
-    GUserInterface(Game& game);
+    GUserInterface();
     ~GUserInterface();
+    void init(data_share&);
+    void run();
+    void draw_board(board&);
+    void draw_right_vp();
+    void run_game_over_routine();
+    void draw_connecting_window();
+    void draw_player_sprite();
+    void remove_mouse_events();
+    comm_window panel;
   private:
+    SDL_Event event;
     std::map<std::string, SDL_Texture*> sprites;
     SDL_Renderer* renderer;
     SDL_Window* window;
     bool quit;
-    void init();
     void load_file(std::string name);
     void draw_sprite(std::string name, int x, int y);
     void render();
-    void draw_board(board&);
     void on_mouse_click(unsigned int x, unsigned int y);
     std::string player1_pic;
     std::string player2_pic;
     std::string board_pic;
     std::string game_over_pic;
+    std::string pure_window_pic;
     std::string winner1_pic;
     std::string winner2_pic;
     bool game_over;
-    void run_game_over_routine();
-    void draw_game_over_texture();
-    bool is_quit_pushed(unsigned int x, unsigned int y);
-    bool is_new_game_pushed(unsigned int x, unsigned int y);
-    game_over_window game_over_win;
+    void put_panel_out(std::string pic);
+    void draw_game_over_window();
     SDL_Rect leftViewport;
     SDL_Rect rightViewport;
     void init_left_viewport();
     void init_right_viewport();
-    void draw_right_vp();
-
+    data_share* shared_data;
 };
 #endif /* GUI_H_ */

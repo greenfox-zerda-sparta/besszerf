@@ -12,3 +12,4 @@ unsigned int left_vp_width = board_row_size * tile_width;
 unsigned int right_vp_width = 200;
 unsigned int screen_width = left_vp_width + right_vp_width;
 unsigned int screen_height = board_col_size * tile_height;
+

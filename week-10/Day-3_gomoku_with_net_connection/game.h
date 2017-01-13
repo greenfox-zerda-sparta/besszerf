@@ -19,12 +19,12 @@ class Game {
     void reset();
     Player get_current_player();
     board gameboard;
+    void set_next_player();
   private:
     Player player1;
     Player player2;
     Player* current_player;
     WinnerLineChecker winner_checker;
-    void set_next_player();
     bool is_not_engaged(coordinate&);
     void set_board(coordinate&);
     bool has_current_player_won(coordinate&);
