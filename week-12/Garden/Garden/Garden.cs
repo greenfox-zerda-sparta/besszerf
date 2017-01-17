@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garden
 {
@@ -32,28 +29,35 @@ namespace Garden
             foreach (var Plant in PlantsList)
             {
                 string state = "The " + Plant.Color + " " + Plant.Type;
-                state += (Plant.NeedsWater()? " needs water." : " doesn't need water.");
+                state += (Plant.NeedsWater() ? " needs water." : " doesn't need water.");
                 Console.WriteLine(state);
             }
+        }
+
+        private int countThirstyPlants()
+        {
+            int numOfThirstyPlants = 0;
+            foreach (var Plant in PlantsList)
+            {
+                if (Plant.NeedsWater())
+                {
+                    ++numOfThirstyPlants;
+                }
+            }
+            return numOfThirstyPlants;
         }
 
         public void Watering(double amountOfWater)
         {
             Console.WriteLine();
             Console.WriteLine("Watering with {0}", amountOfWater);
-            int numOfThirstyPlants = 0;
-            foreach (var Plant in PlantsList)
-            {
-                if(Plant.NeedsWater())
-                {
-                    ++numOfThirstyPlants;
-                }
-            }
+            int numOfThirstyPlants = countThirstyPlants();
+
             foreach (var Plant in PlantsList)
             {
                 if (Plant.NeedsWater())
                 {
-                    Plant.Watering(amountOfWater/numOfThirstyPlants);
+                    Plant.Watering(amountOfWater / numOfThirstyPlants);
                 }
             }
         }
