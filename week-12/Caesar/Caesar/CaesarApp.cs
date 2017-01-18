@@ -9,9 +9,9 @@ namespace Caesar
     class CaesarApp
     {
         private string InputText;
+        private Arguments myArgs;
+        private Error myError;
 
-        Arguments myArgs;
-        Error myError;
         public CaesarApp(ref string[] args)
         {
             myArgs = new Arguments(ref args);

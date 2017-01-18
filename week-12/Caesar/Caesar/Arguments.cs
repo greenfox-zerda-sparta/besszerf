@@ -11,32 +11,25 @@ namespace Caesar
         private string[] args;
         private int argsLength;
         public int ArgsLength{ get { return argsLength; } }
-        private string inputFileName;
+        private string inputFileName = "";
         public string InputFileName { get { return inputFileName; } }
-        private bool isFlagS;
+        private bool isFlagS = false;
         public bool IsFlagS { get { return isFlagS; } }
-        private bool isArgS;
+        private bool isArgS = false;
         public bool IsArgS { get { return isArgS; } }
-        private int shift;
+        private int shift = 100;
         public int Shift { get { return shift; } }
-        private bool isFlagO;
+        private bool isFlagO = false;
         public bool IsFlagO { get { return isFlagO; } }
-        private bool isArgO;
+        private bool isArgO = false;
         public bool IsArgO { get { return isArgO; } }
-        private string outputFileName;
+        private string outputFileName = "";
         public string OutputFileName { get { return outputFileName; } }
 
         public Arguments(ref string[] args)
         {
             this.args = args;
             argsLength = args.Length;
-            inputFileName = "";
-            outputFileName = "";
-            isFlagS = false;
-            shift = 100;
-            isFlagO = false;
-            isArgS = false;
-            isArgO = false;
             ParseInputFileName();
             ParseShift();
             ParseOutput();
@@ -44,15 +37,12 @@ namespace Caesar
 
         private void ParseInputFileName()
         {
-            string FileName;
+            string FileName = "";
             try
             {
                 FileName = args[0];
             }
-            catch
-            {
-                FileName = "";
-            }
+            catch {}
             if (FileName == "-s" || FileName == "-o")
             {
                 FileName = "";
