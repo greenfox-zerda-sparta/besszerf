@@ -5,9 +5,11 @@ namespace Todo
     class Arguments
     {
         private string[] _args;
+        private TaskHandler Run;
 
         public Arguments(string[] args)
         {
+            Run = new TaskHandler();
             _args = args;
             string FirstArgument = GetFirstArgument();
             if (FirstArgument == "")
@@ -72,7 +74,7 @@ namespace Todo
                 Console.WriteLine("Too many arguments.");
                 return;
             }
-             Console.WriteLine("Listing...");
+             Run.PrintList();
         }
 
         private void Add()
@@ -87,7 +89,7 @@ namespace Todo
                 Console.WriteLine("No task is provided.");
                 return;
             }
-            Console.WriteLine("Adding task...");
+            Run.AddTask(_args[1]);
         }
 
         private void Remove()
@@ -112,7 +114,7 @@ namespace Todo
                 Console.WriteLine("Index is not a number.");
                 return;
             }
-            Console.WriteLine("Removing item {0}...", index);
+            Run.RemoveTask(index);
         }
 
         private void Check()
@@ -137,7 +139,7 @@ namespace Todo
                 Console.WriteLine("Index is not a number.");
                 return;
             }
-            Console.WriteLine("Checking item {0}...", index);
+            Run.CompleteTask(index);
         }
 
 
