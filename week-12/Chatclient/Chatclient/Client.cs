@@ -10,11 +10,15 @@ namespace Chatclient
 
         private Socket sender;
         private byte[] bytes;
+        private string _nameOfUser;
+        private bool _firstRun;
         public Client()
         {
             // Data buffer for incoming data.
-//            byte[] bytes = new byte[1024];
+            //            byte[] bytes = new byte[1024];
             bytes = new byte[1024];
+            _firstRun = true;
+            _nameOfUser = "";
 
             // Connect to a remote device.
             try
@@ -62,7 +66,37 @@ namespace Chatclient
             }
         }
 
-        public void Send(string message)
+        public void Run()
+        {
+            string message;
+            while (true)
+            {
+                if(_firstRun)
+                {
+                    Console.Write("Enter your name ");
+                }
+                Console.Write(_nameOfUser + "> ");
+                message = Console.ReadLine();
+                if (message != "" && !_firstRun)
+                {
+                    Send(_nameOfUser + ": " + message);
+                    Receive();
+                }
+                if (message == "quit!")
+                {
+                    break;
+                }
+                if (_firstRun)
+                {
+                    _nameOfUser = message;
+                    _firstRun = false;
+                    message = "";
+                }
+            }
+
+        }
+
+        private void Send(string message)
         {
             message += "\n";
             try
@@ -70,8 +104,8 @@ namespace Chatclient
                 // Encode the data string into a byte array.
                 byte[] msg = Encoding.ASCII.GetBytes(message);
 
-            // Send the data through the socket.
-            int bytesSent = sender.Send(msg);
+                // Send the data through the socket.
+                int bytesSent = sender.Send(msg);
             }
             catch (ArgumentNullException ane)
             {
@@ -87,14 +121,13 @@ namespace Chatclient
             }
         }
 
-        public void Receive()
+        private void Receive()
         {
             try
             {
                 // Receive the response from the remote device.
                 int bytesRec = sender.Receive(bytes);
-            Console.WriteLine("Echoed test = {0}",
-                            Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
             }
             catch (ArgumentNullException ane)
             {
@@ -116,7 +149,7 @@ namespace Chatclient
             {
                 // Release the socket.
                 sender.Shutdown(SocketShutdown.Both);
-            sender.Close();
+                sender.Close();
             }
             catch (ArgumentNullException ane)
             {

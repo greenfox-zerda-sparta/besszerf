@@ -11,21 +11,7 @@ namespace Chatclient
         public static int Main(String[] args)
         {
             Client myClient = new Client();
-            string message;
-            while (true)
-            {
-                Console.Write(">> ");
-                message = Console.ReadLine();
-                if(message != "")
-                {
-                    myClient.Send(message);
-                    myClient.Receive();
-                }
-                if (message == "quit!")
-                {
-                    break;
-                }
-            }
+            myClient.Run();
             return 0;
         }
 

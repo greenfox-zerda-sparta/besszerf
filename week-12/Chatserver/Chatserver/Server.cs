@@ -64,10 +64,10 @@ namespace Chatserver
                     {
                         for (int k = 0; k < SocketSet.Count; ++k)
                         {
-                            //if(i == k) //Sending to the others
-                            //{
-                            //    continue;
-                            //}
+                            if(i == k) //Sending to the others
+                            {
+                                continue;
+                            }
                             Send(SocketSet[k]);
                         }
 
@@ -95,7 +95,7 @@ namespace Chatserver
                 if (data.IndexOf("\n") > -1)
                 {
                     // Show the data on the console.
-                    Console.WriteLine("Text received : {0}", data);
+                    Console.Write(data);
                 }
             }
         }
