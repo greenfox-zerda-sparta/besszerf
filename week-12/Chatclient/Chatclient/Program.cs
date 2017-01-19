@@ -16,8 +16,11 @@ namespace Chatclient
             {
                 Console.Write(">> ");
                 message = Console.ReadLine();
-                myClient.Send(message);
-                myClient.Receive();
+                if(message != "")
+                {
+                    myClient.Send(message);
+                    myClient.Receive();
+                }
                 if (message == "quit!")
                 {
                     break;
