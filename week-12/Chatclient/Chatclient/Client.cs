@@ -126,8 +126,11 @@ namespace Chatclient
             try
             {
                 // Receive the response from the remote device.
-                int bytesRec = sender.Receive(bytes);
-                Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                while (sender.Available > 0)
+                {
+                    int bytesRec = sender.Receive(bytes);
+                    Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                }
             }
             catch (ArgumentNullException ane)
             {
