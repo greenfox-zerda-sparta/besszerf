@@ -48,10 +48,8 @@ namespace Todo
         public void AddTask(string taskToAdd)
         {
             string task = "[ ] " + taskToAdd;
-            using (StreamWriter file = File.AppendText(filepath))
-            {
-                file.WriteLine(task);
-            }
+            StreamWriter file = File.AppendText(filepath);
+            file.WriteLine(task);
             PrintList();
         }
 

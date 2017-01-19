@@ -141,7 +141,5 @@ namespace Todo
             }
             Run.CompleteTask(index);
         }
-
-
     }
 }
