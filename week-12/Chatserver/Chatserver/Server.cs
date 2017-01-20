@@ -80,8 +80,21 @@ namespace Chatserver
         {
             // Echo the data back to the client.
             byte[] msg = Encoding.ASCII.GetBytes(data);
-
-            handler.Send(msg);
+            try
+            {
+                handler.Send(msg);
+            }
+            catch(System.Net.Sockets.SocketException)
+            {
+                for (int i = 0; i < SocketSet.Count; ++i)
+                {
+                    if (SocketSet[i] == handler)
+                    {
+                        SocketSet.Remove(handler);
+                        Console.WriteLine("Client number {0} is disconnected", i + 1);
+                    }
+                }
+            }
         }
 
         private void Receive(Socket handler)
