@@ -11,89 +11,85 @@ namespace Chatclient
         private Socket sender;
         private byte[] bytes;
         private string _nameOfUser;
-        private bool _firstRun;
+        private bool connected;
+        private string serverIP = "10.27.6.69";
+
         public Client()
         {
-            // Data buffer for incoming data.
-            //            byte[] bytes = new byte[1024];
             bytes = new byte[1024];
-            _firstRun = true;
             _nameOfUser = "";
+            connected = false;
+            Connect();
 
-            // Connect to a remote device.
-            try
+        }
+
+        public void Connect()
+        {
+            while (!connected)
             {
-                // Establish the remote endpoint for the socket.
-                // This example uses port 11000 on the local computer.
-                IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-                IPAddress ipAddress = ipHostInfo.AddressList[0];
-                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
-
-                // Create a TCP/IP  socket.
-                //Socket sender = new Socket(AddressFamily.InterNetwork,
-                //    SocketType.Stream, ProtocolType.Tcp);
-                sender = new Socket(AddressFamily.InterNetwork,
-                     SocketType.Stream, ProtocolType.Tcp);
-
-                // Connect the socket to the remote endpoint. Catch any errors.
                 try
                 {
-                    sender.Connect(remoteEP);
+                    IPHostEntry ipHostInfo = Dns.Resolve(serverIP);
+                    IPAddress ipAddress = ipHostInfo.AddressList[0];
+                    IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
-                    Console.WriteLine("Socket connected to {0}",
-                        sender.RemoteEndPoint.ToString());
+                    sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
+                    try
+                    {
+                        sender.Connect(remoteEP);
+                        Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+                        connected = true;
 
-
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                    }
+                    catch (SocketException se)
+                    {
+                        Console.WriteLine("SocketException : {0}", se.ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                    }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                    Console.WriteLine(e.ToString());
                 }
-
             }
-            catch (Exception e)
+
+            if (connected)
             {
-                Console.WriteLine(e.ToString());
+                if (sender.Available > 0)
+                {
+                    int bytesRec = sender.Receive(bytes);
+                    Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                    _nameOfUser = Console.ReadLine();
+                    Send(_nameOfUser);
+                }
             }
         }
 
         public void Run()
         {
             string message;
+            message = "";
             while (true)
             {
-                if(_firstRun)
+                Receive();
+                if (Console.KeyAvailable)
                 {
-                    Console.Write("Enter your name ");
-                }
-                Console.Write(_nameOfUser + "> ");
-                message = Console.ReadLine();
-                if (message != "" && !_firstRun)
-                {
-                    Send(_nameOfUser + ": " + message);
-                    Receive();
-                }
-                if (message == "quit!")
-                {
-                    break;
-                }
-                if (_firstRun)
-                {
-                    _nameOfUser = message;
-                    _firstRun = false;
-                    message = "";
+                    message = Console.ReadLine();
+                    Send(message);
+                    if (message == "quit!")
+                    {
+                        break;
+                    }
                 }
             }
-
         }
 
         private void Send(string message)
@@ -101,10 +97,7 @@ namespace Chatclient
             message += "\n";
             try
             {
-                // Encode the data string into a byte array.
                 byte[] msg = Encoding.ASCII.GetBytes(message);
-
-                // Send the data through the socket.
                 int bytesSent = sender.Send(msg);
             }
             catch (ArgumentNullException ane)
@@ -125,7 +118,6 @@ namespace Chatclient
         {
             try
             {
-                // Receive the response from the remote device.
                 while (sender.Available > 0)
                 {
                     int bytesRec = sender.Receive(bytes);
@@ -150,7 +142,6 @@ namespace Chatclient
         {
             try
             {
-                // Release the socket.
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
             }
