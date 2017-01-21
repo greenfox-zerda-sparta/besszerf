@@ -3,34 +3,34 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Chatclient
+namespace Chatclientwf
 {
     class Client
     {
-
         private Socket sender;
         private byte[] bytes;
         private string _nameOfUser;
-        private bool connected;
-        private string serverIP;
+        public string NameOfUser { get { return _nameOfUser; } set { _nameOfUser = value; } }
+        private bool _isConnected;
+        private string _serverIP;
+        public string ServerIp { get { return _serverIP; } set { _serverIP = value; } }
 
         public Client()
         {
             bytes = new byte[1024];
-            _nameOfUser = "";
-            connected = false;
-            serverIP = Dns.GetHostName();
-            Connect();
+            _nameOfUser = "Feri";
+            _serverIP = Dns.GetHostName();
+            _isConnected = false;
 
         }
 
         public void Connect()
         {
-            while (!connected)
+             while (!_isConnected)
             {
                 try
                 {
-                    IPHostEntry ipHostInfo = Dns.Resolve(serverIP);
+                    IPHostEntry ipHostInfo = Dns.Resolve(_serverIP);
                     IPAddress ipAddress = ipHostInfo.AddressList[0];
                     IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
@@ -40,7 +40,7 @@ namespace Chatclient
                     {
                         sender.Connect(remoteEP);
                         Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
-                        connected = true;
+                        _isConnected = true;
 
                     }
                     catch (ArgumentNullException ane)
@@ -62,38 +62,21 @@ namespace Chatclient
                 }
             }
 
-            if (connected)
+            if (_isConnected)
             {
-                if (sender.Available > 0)
+                while (true)
                 {
-                    int bytesRec = sender.Receive(bytes);
-                    Console.Write(Encoding.UTF8.GetString(bytes, 0, bytesRec));
-                    _nameOfUser = Console.ReadLine();
-                    Send(_nameOfUser);
-                }
-            }
-        }
-
-        public void Run()
-        {
-            string message;
-            message = "";
-            while (true)
-            {
-                Receive();
-                if (Console.KeyAvailable)
-                {
-                    message = Console.ReadLine();
-                    Send(message);
-                    if (message == "quit!")
+                    if (sender.Available > 0)
                     {
+                        int bytesRec = sender.Receive(bytes);
+                        Send(_nameOfUser);
                         break;
                     }
                 }
             }
         }
 
-        private void Send(string message)
+         public void Send(string message)
         {
             message += "\n";
             try
@@ -115,14 +98,14 @@ namespace Chatclient
             }
         }
 
-        private void Receive()
+        public string Receive()
         {
             try
             {
                 while (sender.Available > 0)
                 {
                     int bytesRec = sender.Receive(bytes);
-                    Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                    return Encoding.UTF8.GetString(bytes, 0, bytesRec);
                 }
             }
             catch (ArgumentNullException ane)
@@ -137,10 +120,12 @@ namespace Chatclient
             {
                 Console.WriteLine("Unexpected exception : {0}", e.ToString());
             }
+            return "";
         }
 
-        ~Client()
+        public void Disconnect()
         {
+            _isConnected = false;
             try
             {
                 sender.Shutdown(SocketShutdown.Both);
@@ -157,6 +142,15 @@ namespace Chatclient
             catch (Exception e)
             {
                 Console.WriteLine("Unexpected exception : {0}", e.ToString());
+            }
+        }
+
+
+        ~Client()
+        {
+            if (_isConnected)
+            {
+                Disconnect();
             }
         }
     }

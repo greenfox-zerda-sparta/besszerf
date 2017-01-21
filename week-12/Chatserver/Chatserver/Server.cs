@@ -110,7 +110,7 @@ namespace Chatserver
             // Echo the data back to the client.
             try
             {
-                byte[] msg = Encoding.ASCII.GetBytes(data);
+                byte[] msg = Encoding.UTF8.GetBytes(data);
                 handler.Send(msg);
             }
             catch
@@ -127,7 +127,7 @@ namespace Chatserver
             if (handler.Available > 0)
             {
                 int bytesRec = handler.Receive(bytes);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
                 if (data.IndexOf("\n") > -1)
                 {
                     // Show the data on the console.
