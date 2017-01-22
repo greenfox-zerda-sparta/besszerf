@@ -122,7 +122,7 @@ namespace Chatclient
                 while (sender.Available > 0)
                 {
                     int bytesRec = sender.Receive(bytes);
-                    Console.Write(Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                    Console.Write(Encoding.UTF8.GetString(bytes, 0, bytesRec));
                 }
             }
             catch (ArgumentNullException ane)
