@@ -100,7 +100,7 @@ namespace Chatclientwf
         void Start_thread()
         {
             _thread = new Thread(UpdateIncomingMessages);
-            _thread.IsBackground = true;
+ //           _thread.IsBackground = true;
             _thread.Start();
 
         }
@@ -122,7 +122,7 @@ namespace Chatclientwf
             _thread.Join();
         }
 
-        ~Form1()
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!_isConnect)
             {
@@ -131,6 +131,5 @@ namespace Chatclientwf
             }
             Stop_thread();
         }
-
     }
 }
