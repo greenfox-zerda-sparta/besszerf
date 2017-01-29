@@ -10,10 +10,10 @@ ClientSocket::ClientSocket(QObject *parent)
     serverAddress = "localhost";
     userName = "Feri";
     timerId = -1;
+    isFirstMessageSent = false;
     connect(socket, SIGNAL(readyRead()), this, SLOT(newDataAvailable()));
-    connect(socket, SIGNAL(connected()), this, SIGNAL(socketConnected()));
-    connect(socket, SIGNAL(connected()), this, SLOT(sendFirstMessage()));
     connect(parent, SIGNAL(sendMessage(QString)), this, SLOT(onSend(QString)));
+    connect(socket, SIGNAL(disconnected()), this, SLOT(closeSocket()));
 }
 
 void ClientSocket::StartTimer()
@@ -24,7 +24,7 @@ void ClientSocket::StartTimer()
 
 void ClientSocket::StopTimer()
 {
-    if(!(timerId = -1))
+    if(!(timerId == -1))
     {
         killTimer(timerId);
         timerId = -1;
@@ -46,6 +46,12 @@ void ClientSocket::newDataAvailable()
     incomingData = (socket->readAll()).trimmed();
     QString str(QString::fromUtf8(incomingData));
     emit incomingMessage(str);
+    if(!isFirstMessageSent)
+    {
+        onSend(userName);
+        isFirstMessageSent = true;
+    }
+
 }
 
 void ClientSocket::onSend(QString message)
@@ -53,7 +59,9 @@ void ClientSocket::onSend(QString message)
     if (socket->state() != QTcpSocket::ConnectedState) {
         return;
     }
-   qint64 error = socket->write(message.toUtf8());
+    message += "\n";
+    socket->write(message.toUtf8());
+    socket->flush();
 }
 
 void ClientSocket::timerEvent(QTimerEvent *)
@@ -63,12 +71,13 @@ void ClientSocket::timerEvent(QTimerEvent *)
     }
 }
 
-void ClientSocket::sendFirstMessage()
+void ClientSocket::Disconnect()
 {
-    onSend(userName);
+    socket->disconnectFromHost();
+    isFirstMessageSent = false;
 }
 
-void ClientSocket::Disconnect()
+void ClientSocket::closeSocket()
 {
     socket->close();
 }
