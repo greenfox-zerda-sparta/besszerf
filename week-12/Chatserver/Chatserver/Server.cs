@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Chatserver
 {
@@ -14,6 +15,7 @@ namespace Chatserver
         Dictionary<Socket, string> SocketSet;
         List<Socket> ToRemove;
         byte[] bytes;
+        Int32 port;
 
         public Server()
         {
@@ -22,9 +24,10 @@ namespace Chatserver
             // Establish the local endpoint for the socket.
             // Dns.GetHostName returns the name of the 
             // host running the application.
+            port = 11000;
             IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, port);
             SocketSet = new Dictionary<Socket, string>();
             // Create a TCP/IP socket.
             listener = new Socket(AddressFamily.InterNetwork,
@@ -51,6 +54,7 @@ namespace Chatserver
                 ReceiveConnections();
                 Messaging();
                 RemoveDisconnectedClients();
+                Thread.Sleep(200);
             }
         }
 

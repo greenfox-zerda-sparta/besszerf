@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->SendButton->setEnabled(false);
     ui->EditedText->setEnabled(false);
     connect(Client, SIGNAL(incomingMessage(QString)), this, SLOT(onIncomingMessage(QString)));
-    connect(Client, SIGNAL(socketConnected()), this, SLOT(onSocketConnected()));
 }
 
 MainWindow::~MainWindow()
@@ -42,10 +41,11 @@ void MainWindow::on_ConnectButton_toggled(bool checked)
     ui->SendButton->setEnabled(true);
     ui->EditedText->setEnabled(true);
     Client->StartTimer();
-    Client->Disconnect();
   }
   else
   {
+      Client->Disconnect();
+      Client->StopTimer();
       ui->ConnectButton->setText("Connect");
       ui->NameField->setReadOnly(false);
       ui->NameField->setEnabled(true);
@@ -55,7 +55,6 @@ void MainWindow::on_ConnectButton_toggled(bool checked)
       ui->PortField->setEnabled(true);
       ui->SendButton->setEnabled(false);
       ui->EditedText->setEnabled(false);
-      Client->StopTimer();
   }
 }
 
@@ -83,17 +82,7 @@ void MainWindow::onIncomingMessage(QString str)
     setIncomingTextArea(str);
 }
 
-void MainWindow::onSocketConnected()
-{
-    setIncomingTextArea("Connected to server");
-}
-
-
 void MainWindow::setIncomingTextArea(QString message)
 {
-//    QString text = ui->IncomingText->toPlainText();
-//    ui->IncomingText->clear();
-//    text += message + "\n";
-//    ui->IncomingText->insertPlainText(text);
     ui->IncomingText->append(message);
 }

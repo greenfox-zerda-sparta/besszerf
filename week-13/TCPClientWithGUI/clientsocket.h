@@ -25,13 +25,12 @@ public:
 
 signals:
     void incomingMessage(QString);
-    void socketConnected();
 
 protected slots:
     void connectToServer();
     void newDataAvailable();
-    void sendFirstMessage();
     void onSend(QString message);
+    void closeSocket();
 
 protected:
     void timerEvent(QTimerEvent*);
@@ -39,5 +38,6 @@ private:
     QTcpSocket * socket;
     QByteArray incomingData;
     int timerId;
+    bool isFirstMessageSent;
 };
 #endif // CLIENTSOCKET_H

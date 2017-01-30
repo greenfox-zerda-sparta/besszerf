@@ -26,8 +26,6 @@ private slots:
 
     void onIncomingMessage(QString message);
 
-    void onSocketConnected();
-
 private:
     Ui::MainWindow *ui;
     ClientSocket *Client;
