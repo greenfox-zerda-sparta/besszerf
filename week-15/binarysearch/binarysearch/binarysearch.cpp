@@ -12,10 +12,10 @@ bool isValueInVector_binarySearch(int value, vector<int> &v) {
 	int low = 0;
 	int high = v.size() -1;
 	int medium;
-	if (value > v[high] || value < v[low]) {
-		return false;
-	}
 	while (true) {
+		if (value > v[high] || value < v[low]) {
+			return false;
+		}
 		medium = (high + low) / 2;
 		cout << v[medium] << " ";
 		if (medium == high || medium == low) {
