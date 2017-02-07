@@ -16,6 +16,7 @@ public:
 	void printGroups();
 private:
 	vector<int> id;
+	vector<int> sz;
 	int root(int i);
 	bool contains(vector<int> &v, int x);
 };
@@ -24,6 +25,7 @@ QuickUnion::QuickUnion(int l) {
 	for (int i = 0; i < l; ++i) {
 		id.push_back(i);
 	}
+	sz = vector<int>(l, 0);
 }
 
 int QuickUnion::root(int i) {
@@ -39,9 +41,14 @@ bool QuickUnion::find(int index1, int index2) {
 }
 
 void QuickUnion::unite(int index1, int index2) {
-	int i = root(index1);
-	int j = root(index2);
-	id[i] = j;
+	if (sz[root(index1)] >= sz[root(index2)]) {
+		sz[root(index1)] += sz[root(index2)];
+		id[root(index2)] = root(index1);
+	}
+	else {
+		sz[root(index2)] += sz[root(index1)];
+		id[root(index1)] = root(index2);
+	}
 }
 
 bool QuickUnion::contains(vector<int> &v, int x){
@@ -82,7 +89,7 @@ void QuickUnion::printGroups()
 int main()
 {
 	QuickUnion u(10);
-	vector<vector<int>> connections = { { 3, 4 },/*{ 4, 9 },{ 8, 0 },*/{ 2, 3 },{ 5, 6 },{ 5, 9 },{ 7, 3 },{ 4, 8 },{ 6, 1 } };
+	vector<vector<int>> connections = { { 3, 4 },{ 4, 9 },{ 8, 0 },{ 2, 3 },/*{ 5, 6 },{ 5, 9 },*/{ 7, 3 },{ 4, 8 },{ 6, 1 } };
 	for (auto it : connections) {
 		u.unite(it[0], it[1]);
 	}
