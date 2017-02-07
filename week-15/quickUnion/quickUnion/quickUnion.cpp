@@ -71,9 +71,9 @@ vector<vector<int>> QuickUnion::getGroups() {
 void QuickUnion::printGroups()
 {
 	vector<vector<int>> v = getGroups();
-	for (vector<vector<int>>::iterator it = v.begin(); it != v.end(); ++it) {
-		for (vector<int>::iterator ite = (*it).begin(); ite != (*it).end(); ++ite) {
-			cout << *ite << " ";
+	for (auto it : v) {
+		for (auto ite : it) {
+			cout << ite << " ";
 		}
 		cout << endl;
 	}
@@ -83,8 +83,8 @@ int main()
 {
 	QuickUnion u(10);
 	vector<vector<int>> connections = { { 3, 4 },/*{ 4, 9 },{ 8, 0 },*/{ 2, 3 },{ 5, 6 },{ 5, 9 },{ 7, 3 },{ 4, 8 },{ 6, 1 } };
-	for (vector<vector<int>>::iterator it = connections.begin(); it != connections.end(); ++it) {
-		u.unite((*it)[0], (*it)[1]);
+	for (auto it : connections) {
+		u.unite(it[0], it[1]);
 	}
 	cout << u.find(1, 3) << endl;
 	cout << u.find(0, 4) << endl;
