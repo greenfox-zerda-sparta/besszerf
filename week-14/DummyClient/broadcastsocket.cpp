@@ -4,20 +4,27 @@ BroadcastSocket::BroadcastSocket(QString datagramNeeded, QObject *parent) : QObj
 {
     this->datagramNeeded = datagramNeeded;
     udpSocket = new QUdpSocket(this);
+    isUdpManual = true;
     connect(udpSocket, SIGNAL(readyRead()),
          this, SLOT(processPendingDatagrams()));
+}
+
+void BroadcastSocket::manualStart()
+{
+    isUdpManual = false;
     startUDP();
 }
 
 void BroadcastSocket::startUDP()
 {
-    gotFirstMessage = false;
-    bool connState = false;
-    do {
-        connState = udpSocket->bind(45454, QUdpSocket::ShareAddress);
-    } while(!connState);
-    QDebug qdebug = qDebug();
-    qdebug.noquote() << "\n" << "  UDP Socket is set up.";
+    if(!isUdpManual && udpSocket->state() != QUdpSocket::BoundState) {
+        gotFirstMessage = false;
+        bool connState = false;
+        do {
+            connState = udpSocket->bind(45454, QUdpSocket::ShareAddress);
+        } while(!connState);
+        emit write("\n   UDP Socket is listening.");
+    }
 }
 
 void BroadcastSocket::processPendingDatagrams()
@@ -45,9 +52,16 @@ void BroadcastSocket::parseDatagram(QString datagram)
 
 }
 
+void BroadcastSocket::manualClose()
+{
+    isUdpManual = true;
+     close();
+}
+
 void BroadcastSocket::close()
 {
-         udpSocket->close();
-         QDebug qdebug = qDebug();
-         qdebug.noquote() << "   UDP Socket is closed.\n";
+    if (udpSocket->state() != QUdpSocket::UnconnectedState) {
+        udpSocket->close();
+        emit write("   UDP Socket is closed.\n");
+    }
 }
